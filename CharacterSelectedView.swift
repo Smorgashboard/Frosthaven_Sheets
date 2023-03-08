@@ -233,7 +233,7 @@ struct CharacterSelectedView: View {
                 Text("Character Sheet")
             }
             
-            BattleGoalsView()
+            GameView(characterId: characterId)
                 .tabItem {
                     Image(systemName: "gamecontroller")
                     Text("Game Mode")

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		90C22AFD29B8E26F00ACB0D2 /* BuildAttackDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C22AFC29B8E26F00ACB0D2 /* BuildAttackDeck.swift */; };
 		D6099D4029AD3B0100C867AA /* CheckBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6099D3F29AD3B0100C867AA /* CheckBoxView.swift */; };
 		D6099D6A29AD8D6600C867AA /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6099D6929AD8D6600C867AA /* PersistenceController.swift */; };
 		D6099D6C29ADC7AD00C867AA /* retirementGoals.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6099D6B29ADC7AD00C867AA /* retirementGoals.swift */; };
@@ -47,6 +48,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		90C22AFC29B8E26F00ACB0D2 /* BuildAttackDeck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildAttackDeck.swift; sourceTree = "<group>"; };
 		D6099D3F29AD3B0100C867AA /* CheckBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBoxView.swift; sourceTree = "<group>"; };
 		D6099D6929AD8D6600C867AA /* PersistenceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		D6099D6B29ADC7AD00C867AA /* retirementGoals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = retirementGoals.swift; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 		D66FCBED29AB221F006FE519 = {
 			isa = PBXGroup;
 			children = (
+				90C22AFC29B8E26F00ACB0D2 /* BuildAttackDeck.swift */,
 				D677700C29B63B4200262A9D /* AddToInventoryView.swift */,
 				D677700A29B63B2500262A9D /* CharacterInventoryView.swift */,
 				D677700829B5F4DA00262A9D /* InventoryStoreView.swift */,
@@ -281,6 +284,7 @@
 				D69A44A929AB9799001D5908 /* Characters.xcdatamodeld in Sources */,
 				D66FCC1F29AB2642006FE519 /* GameView.swift in Sources */,
 				D6776FF929B173C600262A9D /* DrifterPerkyView.swift in Sources */,
+				90C22AFD29B8E26F00ACB0D2 /* BuildAttackDeck.swift in Sources */,
 				D6099D7429AE841F00C867AA /* xpDict.swift in Sources */,
 				D6776FFF29B177D100262A9D /* GeminatePerkyView.swift in Sources */,
 				D6776FFB29B177B200262A9D /* BlinkbladePerkyView.swift in Sources */,
