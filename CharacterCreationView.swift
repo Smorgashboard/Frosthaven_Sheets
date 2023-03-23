@@ -13,6 +13,10 @@ struct CharacterCreationView: View {
     @Environment(\.presentationMode) var presentationMode
     @Environment(\.colorScheme) var colorScheme
     
+    let mainBackgroundGradient = LinearGradient(
+        gradient: Gradient(colors: [Color.black, Color.cyan, Color.black]),
+        startPoint: .top, endPoint: .bottom)
+    
     @State private var characterName = ""
     @State private var playableClass = PlayableClass.boneshaper
     @State private var startingLevel = 1
@@ -21,6 +25,8 @@ struct CharacterCreationView: View {
     
     var body: some View {
         NavigationStack {
+            ZStack{
+                mainBackgroundGradient.ignoresSafeArea()
             VStack{
                 Form {
                     Section(header: Text("Character Information")) {
@@ -37,10 +43,10 @@ struct CharacterCreationView: View {
                         }
                     }
                     Picker("Reitrment Goal", selection: $selectedKey) {
-                                    ForEach(retirementGoals.keys.sorted(), id: \.self) { key in
-                                        Text(key)
-                                    }
-                                }
+                        ForEach(retirementGoals.keys.sorted(), id: \.self) { key in
+                            Text(key)
+                        }
+                    }
                     Text("Flavor Text:").fontWeight(.bold)
                     Text("\(retirementGoals[selectedKey]!.0)")
                     Text("Goal:").fontWeight(.bold)
@@ -48,9 +54,10 @@ struct CharacterCreationView: View {
                     Text("Rewards:").fontWeight(.bold)
                     Text("\(retirementGoals[selectedKey]!.2)")
                     
-                                
-
+                    
+                    
                 }
+                .scrollContentBackground(Visibility.hidden)
                 .toolbarColorScheme(.dark, for: .navigationBar)
                 .navigationBarTitle("Create Character", displayMode: .inline)
                 .toolbarBackground(Color.black, for: .navigationBar)
@@ -68,6 +75,11 @@ struct CharacterCreationView: View {
                     newCharacter.displayClass = getDisplayClass(playableClass: playableClass.rawValue)
                     newCharacter.xp = xpDict[startingLevel]!
                     newCharacter.inventoryItems = []
+                    newCharacter.attackDeck = ["-2", "-1", "-1", "-1", "-1", "-1", "0", "0", "0", "0", "0", "0", "+1", "+1", "+1", "+1", "+1", "+2", "x0", "x2"]
+                    newCharacter.unlockedCards = getUnlockedCards(playableClass: playableClass.rawValue)
+                    newCharacter.cardUnlocks = Int16(startingLevel - 1)
+                    newCharacter.handSize = getHandSize(playableClass: playableClass.rawValue)
+                    newCharacter.health = getHealth(level:Int16(startingLevel), playableClass: playableClass.rawValue)
                     
                     do {
                         try self.moc.save()
@@ -81,6 +93,31 @@ struct CharacterCreationView: View {
                 .preferredColorScheme(.dark)
             }
         }
+        }
+    }
+}
+
+func getHealth(level: Int16, playableClass: String) -> Int16 {
+        return (healthDict[playableClass]?[Int16(level)])!
+    }
+
+
+func getHandSize(playableClass: String) -> Int16 {
+    switch playableClass{
+    case "blinkblade":
+        return 10
+    case "drifter":
+        return 12
+    case "geminate":
+        return 14
+    case "boneshaper":
+        return 12
+    case "bannerspear":
+        return 10
+    case "deathwalker":
+        return 11
+    default:
+        return 14
     }
 }
 
@@ -102,6 +139,18 @@ func getLogo(playableClass: String) -> String {
         return "NoLogo"
     }
 }
+
+func getUnlockedCards (playableClass: String) -> [String] {
+    let tempCards = cardStore[playableClass]
+    var returnedCards : [String] = []
+    for card in tempCards! {
+        if card.unlocked == true {
+            returnedCards.append(card.name)
+        }
+    }
+    return returnedCards
+}
+
 
 func getDisplayClass(playableClass: String) -> String{
     switch playableClass{

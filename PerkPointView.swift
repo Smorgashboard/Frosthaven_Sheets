@@ -11,6 +11,7 @@ struct PerkPointView: View {
     @Environment(\.managedObjectContext) var moc
     var characterId: UUID
     @FetchRequest var characters: FetchedResults<Character>
+    private var titleColor: Color{CustomColor.blueish}
     
     
     init(characterId: UUID){
@@ -27,10 +28,15 @@ struct PerkPointView: View {
     var body: some View {
         let character = characters.first!
         VStack {
-            Text("Perk Points")
-                .foregroundColor(.green)
+            Text("Perk Points:")
+                .foregroundColor(titleColor)
+                .font(.title3)
+                .bold()
+                .padding(.top)
+            Divider()
+                .foregroundColor(.black)
                 .padding(.bottom)
-            
+                .bold()
             Grid {
                 GridRow {
                     HStack{

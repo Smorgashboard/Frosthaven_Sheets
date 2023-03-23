@@ -4,21 +4,41 @@
 //
 //  Created by Hackin Tosh on 2/26/23.
 //
+import EffectsLibrary
 import CoreData
 import SwiftUI
 
-let backgroundGradient = LinearGradient(
-    gradient: Gradient(colors: [Color.blue, Color.cyan, Color.white]),
-    startPoint: .top, endPoint: .bottom)
+struct CustomColor {
+    static let darkGray = Color("darkGray")
+    static let tanish = Color("tanish")
+    static let blueish = Color("blueish")
+    static let darkBrown = Color("darkBrown")
+    static let darkGreen = Color("darkGreen")
+    static let blue2 = Color("blue2")
+    static let otherGray = Color("otherGray")
+}
 
 let color1: UIColor = UIColor(named: "Color1") ?? .white
 
+private var fontColor: Color{.white}
+private var tileColor: Color{CustomColor.otherGray}
+private var borderColor: Color{CustomColor.blueish}
+private var titleColor: Color{CustomColor.blueish}
+
 struct CharacterSelectedView: View {
+    @State private var selectedTab = 1
+    let mainBackgroundGradient = LinearGradient(
+        gradient: Gradient(colors: [Color.black, Color.cyan, Color.black]),
+        startPoint: .top, endPoint: .bottom)
     
     var characterId: UUID
     
     @Environment(\.managedObjectContext) private var moc
     @FetchRequest var character: FetchedResults<Character>
+    @State private var showLevelUp = false
+    let levels =  [ "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+    let xpNeeded = ["0", "45", "95", "150", "210", "275", "345", "420", "500"]
+    
     
     static var  accentColor: Color{.green}
     
@@ -140,6 +160,18 @@ struct CharacterSelectedView: View {
                 guard let character = character.first else { return }
                 character.xp = newValue
                 try? moc.save()
+                checkCounter()
+            }
+        )
+    }
+    
+    var health: Binding<Int16> {
+        Binding(
+            get: { character.first?.health ?? 0 },
+            set: { newValue in
+                guard let character = character.first else { return }
+                character.health = newValue
+                try? moc.save()
             }
         )
     }
@@ -166,46 +198,143 @@ struct CharacterSelectedView: View {
         )
     }
     
-    
-    //Why is this here?
-    var perks: [Int: (String, Int, Int)] {
-        perkDict[character.first?.playableClass ?? ""] ?? [:]
+    var level2alerted: Binding<Bool> {
+        Binding(
+            get: {character.first!.level2alerted},
+            set: {newValue in
+                guard let character = character.first else { return }
+                character.level2alerted = newValue
+                try? moc.save()
+            }
+        )
     }
-    @State private var multiSelection = Set<UUID>()
-    @State private var selectedImage = ""
-    @State private var levelExpanded: [String: Bool] = [:]
-    @State private var isHovered = false
-    @State private var isExpanded = false
-    @State private var currentDeck: [String] = []
-    @State var isDisclosureGroupExpanded: Bool = false
     
+    var level3alerted: Binding<Bool> {
+        Binding(
+            get: {character.first!.level3alerted},
+            set: {newValue in
+                guard let character = character.first else { return }
+                character.level3alerted = newValue
+                try? moc.save()
+            }
+        )
+    }
     
+    var level4alerted: Binding<Bool> {
+        Binding(
+            get: {character.first!.level4alerted},
+            set: {newValue in
+                guard let character = character.first else { return }
+                character.level4alerted = newValue
+                try? moc.save()
+            }
+        )
+    }
+    
+    var level5alerted: Binding<Bool> {
+        Binding(
+            get: {character.first!.level5alerted},
+            set: {newValue in
+                guard let character = character.first else { return }
+                character.level5alerted = newValue
+                try? moc.save()
+            }
+        )
+    }
+    
+    var level6alerted: Binding<Bool> {
+        Binding(
+            get: {character.first!.level6alerted},
+            set: {newValue in
+                guard let character = character.first else { return }
+                character.level6alerted = newValue
+                try? moc.save()
+            }
+        )
+    }
+    
+    var level7alerted: Binding<Bool> {
+        Binding(
+            get: {character.first!.level7alerted},
+            set: {newValue in
+                guard let character = character.first else { return }
+                character.level7alerted = newValue
+                try? moc.save()
+            }
+        )
+    }
+    
+    var level8alerted: Binding<Bool> {
+        Binding(
+            get: {character.first!.level8alerted},
+            set: {newValue in
+                guard let character = character.first else { return }
+                character.level8alerted = newValue
+                try? moc.save()
+            }
+        )
+    }
+    
+    var level9alerted: Binding<Bool> {
+        Binding(
+            get: {character.first!.level9alerted},
+            set: {newValue in
+                guard let character = character.first else { return }
+                character.level9alerted = newValue
+                try? moc.save()
+            }
+        )
+    }
+
     
     var body: some View {
         
-        TabView {
+        TabView(selection: $selectedTab) {
             NavigationStack{
                 ScrollView{
                     ZStack{
-                        Color.black.edgesIgnoringSafeArea(.all)
+                        mainBackgroundGradient.ignoresSafeArea()
                         VStack{
-                            headerView
-                            Divider()
-                                .accentColor(Color.accentColor)
-                            LevelsView(xp: xp)
-                            Divider()
-                                .overlay(.green)
                             VStack{
-                                StatsView(playableClass: (character.first?.playableClass)!, level: level, xp:xp, gold:gold )
-                            }.background(Color.clear)
-                            Divider()
-                                .overlay(.green)
+                                headerView
+                                Divider()
+                                    .foregroundColor(fontColor)
+                                    .bold()
+                                LevelsView
+                            }
+                            .background(tileColor)
+                            .cornerRadius(10)
+                            .padding()
+                            .shadow(color: borderColor.opacity(0.3), radius: 5, x: 5, y:5)
+                            VStack{
+                                StatsView(playableClass: (character.first?.playableClass)!, level: level, xp:xp, gold:gold, health:health )
+                            }
+                            .background(tileColor)
+                            .cornerRadius(10)
+                            .padding()
+                            .shadow(color: borderColor.opacity(0.3), radius: 5, x: 5, y:5)
+                                
                             VStack{
                                 PerkPointView(characterId: characterId)
                                 Divider()
-                                    .overlay(.green)
+                                    .bold()
+                                    .foregroundColor(fontColor)
+                            }
+                            .background(tileColor)
+                            .cornerRadius(10)
+                            .padding()
+                            .shadow(color: borderColor.opacity(0.3), radius: 5, x: 5, y:5)
+                            VStack{
                                 MasteryGoalsView(characterId: characterId)
                                 Divider()
+                                    .bold()
+                                    .foregroundColor(fontColor)
+                            }
+                            .background(tileColor)
+                            .cornerRadius(10)
+                            .padding()
+                            .shadow(color: borderColor.opacity(0.3), radius: 5, x: 5, y:5)
+                            VStack{
                                 switch character.first?.playableClass{
                                 case "boneshaper":
                                     BoneshaperPerkyView(characterId: characterId)
@@ -220,9 +349,16 @@ struct CharacterSelectedView: View {
                                 case "blinkblade" :
                                     BlinkbladePerkyView(characterId: characterId)
                                 default:
-                                    Text("ERROR").foregroundColor(.green)
+                                    Text("ERROR")
                                 }
                             }
+                            .background(tileColor)
+                            .cornerRadius(10)
+                            .padding()
+                            .shadow(color: borderColor.opacity(0.3), radius: 5, x: 5, y:5)
+                        }
+                        if showLevelUp {
+                            FireworksView()
                         }
                     }
                 }
@@ -232,38 +368,129 @@ struct CharacterSelectedView: View {
                 Image(systemName: "list.bullet.rectangle.portrait")
                 Text("Character Sheet")
             }
-            
+            .tag(1)
             GameView(characterId: characterId)
                 .tabItem {
                     Image(systemName: "gamecontroller")
                     Text("Game Mode")
                 }
+                .tag(2)
             
-                VStack{
-                    ScrollView{
+            ZStack{
+                mainBackgroundGradient.ignoresSafeArea()
+                ScrollView{
+                    VStack{
                         ResourceTrackerView(axenut: axenut, lumber: lumber, metal: metal, hide: hide, arrowvine: arrowvine, corpsecap: corpsecap, flamefruit: flamefruit, rockroot: rockroot, snowthistle: snowthistle)
                     }
-                   
+                    .background(tileColor)
+                    .cornerRadius(10)
+                    .padding()
+                    .shadow(color: borderColor.opacity(0.3), radius: 5, x: 5, y:5)
                     
-                    CharacterInventoryView(characterId: characterId)
-                    
+                    VStack{
+                        CharacterInventoryView(characterId: characterId)
+                    }
+                    .background(tileColor)
+                    .cornerRadius(10)
+                    .padding()
+                    .shadow(color: borderColor.opacity(0.3), radius: 5, x: 5, y:5)
                 }
+            }
             
-                .tabItem {
-                    Image(systemName: "backpack")
-                    Text("Inventory")
-                }
-
-            CharacterInventoryView(characterId: characterId)
+            .tabItem {
+                Image(systemName: "backpack")
+                Text("Inventory")
+            }
+            .tag(3)
+            
+            DeckView(characterId: characterId)
+            
             
                 .tabItem {
                     Image(systemName: "square.stack")
                     Text("Deck")
                 }
+                .tag(4)
+        }
+        .onChange(of: selectedTab) { newValue in
+            if newValue == 1 {
+                checkCounter()
+            }
+            
         }
     }
     
+    func checkCounter() {
+        switch xp.wrappedValue {
+        case 45..<95:
+            if level2alerted.wrappedValue == false{
+                showAlert()
+                level2alerted.wrappedValue = true
+            }
+        case 95..<150:
+            if level3alerted.wrappedValue == false{
+                showAlert()
+                level3alerted.wrappedValue = true
+            }
+        case 150..<210:
+            if level4alerted.wrappedValue == false{
+                showAlert()
+                level4alerted.wrappedValue = true
+            }
+        case 210..<275:
+            if level5alerted.wrappedValue == false{
+                showAlert()
+                level5alerted.wrappedValue = true
+            }
+        case 275..<345:
+            if level6alerted.wrappedValue == false{
+                showAlert()
+                level6alerted.wrappedValue = true
+            }
+        case 345..<420:
+            if level7alerted.wrappedValue == false{
+                showAlert()
+                level7alerted.wrappedValue = true
+            }
+        case 420..<500:
+            if level8alerted.wrappedValue == false{
+                showAlert()
+                level8alerted.wrappedValue = true
+            }
+        case 500..<501:
+            if level9alerted.wrappedValue == false{
+                showAlert()
+                level9alerted.wrappedValue = true
+            }
+        default:
+            return
+        }
+    }
     
+    func showAlert() {
+        print("Alert")
+        showLevelUp = true
+        let charlevel = character.first!.level
+        let newlevel = charlevel + 1
+        print(newlevel)
+        let charunlocks = character.first!.cardUnlocks
+        let newunlocks = charunlocks + 1
+        print(newunlocks)
+        let newHealth = getHealth(level: newlevel, playableClass: character.first!.playableClass!)
+        do {
+            character.first!.level = newlevel
+            character.first!.cardUnlocks = newunlocks
+            character.first!.health = newHealth
+            try moc.save()
+        }
+        catch{
+            print("error saving")
+        }
+    }
+    
+    func updatelevel() {
+        
+    }
     
     private var headerView: some View{
         HStack(alignment: .top){
@@ -272,125 +499,78 @@ struct CharacterSelectedView: View {
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 70, height: 90)
                 .clipShape(Rectangle())
-                .overlay(Rectangle().stroke(Color.black, lineWidth: 2))
                 .shadow(radius: 5)
                 .padding(.trailing, 10)
             
             VStack(alignment: .leading) {
                 Text("\(character.first?.name ?? "")")
                     .font(.title)
+                    .foregroundColor(titleColor)
                     .fontWeight(.bold)
-                    .foregroundColor(.green)
                     .frame(width: 220.0)
                 
                 Text("The")
                     .font(.title2)
                     .fontWeight(.bold)
-                    .foregroundColor(.green)
+                    .foregroundColor(titleColor)
                     .multilineTextAlignment(.center)
                     .frame(width: 220.0)
                 
                 Text("\(character.first?.displayClass ?? "")")
                     .font(.title)
                     .fontWeight(.bold)
-                    .foregroundColor(.green)
                     .frame(width: 220.0)
+                    .foregroundColor(titleColor)
             }
         }
         .padding()
     }
     
-}
 
-
-
-
-struct LevelsView : View{
-    
-    @Binding var xp: Int16
-    let levels =  [ "1", "2", "3", "4", "5", "6", "7", "8", "9"]
-    let xpNeeded = ["0", "45", "95", "150", "210", "275", "345", "420", "500"]
-    
-     var body: some View {
-        HStack(spacing: 5) {
-            VStack(alignment: .leading){
-                Text("Lvl:")
-                    .foregroundColor(.blue)
-                    .fontWeight(.bold)
-                Spacer()
-                Text("XP:")
-                    .fontWeight(.bold)
-                    .foregroundColor(.blue)
-            }
-            .frame(height:60)
-            ForEach(1..<9) { index in
-                VStack(alignment: .center) {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 4)
-                            .fill(xp >= Int(xpNeeded[index])! ? Color.green : Color.gray)
-                            .frame(width: 31, height: 20) // Set the width and height of the RoundedRectangle
-                        Text("\(index + 1)")
-                            .foregroundColor(.white)
-                            .font(.headline)
-                    }
+    private var LevelsView : some View{
+            HStack(spacing: 5) {
+                VStack(alignment: .leading){
+                    Text("Lvl:")
+                        .foregroundColor(.blue)
+                        .fontWeight(.bold)
                     Spacer()
-                    Text(xpNeeded[index])
+                    Text("XP:")
+                        .fontWeight(.bold)
                         .foregroundColor(.blue)
                 }
                 .frame(height:60)
+                ForEach(1..<9) { index in
+                    VStack(alignment: .center) {
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 4)
+                                .fill(xp.wrappedValue >= Int(xpNeeded[index])! ? Color.green : Color.gray)
+                                .frame(width: 31, height: 20) // Set the width and height of the RoundedRectangle
+                            Text("\(index + 1)")
+                                .foregroundColor(.white)
+                                .font(.headline)
+                        }
+                        Spacer()
+                        Text(xpNeeded[index])
+                            .foregroundColor(.blue)
+                    }
+                    .frame(height:60)
+                }
+                
             }
-        }
+            .padding(.bottom)
+            .alert(isPresented: $showLevelUp) {
+                Alert(
+                    title: Text("Congratulations!"),
+                    message: Text("You have reached the next level! Dont forget to pick a perk and unlock a new card!" ),
+                    dismissButton: .default(Text("Awesome!"))
+                )
+            }
+        
     }
+    
 }
 
-struct BattleGoalsView: View {
-    @State private var selectedKey = "Wallflower"
-    @State private var options: [String] = []
-    @State private var selectedOption: (String, Int)? = nil
-    @State private var showOptions = true
-    
-    var body: some View {
-        VStack {
-            if options.isEmpty && showOptions {
-                Text("Select A Battle Goal!")
-                Button("Start") {
-                    options = Array(battleGoals.keys).shuffled().prefix(3).map { $0 }
-                }
-            } else if showOptions {
-                ForEach(options, id: \.self) { option in
-                    if let goal = battleGoals[option] {
-                        Button(action: {
-                            selectedOption = (option, goal.1)
-                            showOptions = false
-                        }) {
-                            VStack {
-                                Text(option)
-                                    .bold()
-                                Text("Goal: \(goal.0), Checkmarks: \(goal.1)")
-                                    .bold()
-                            }
-                            .padding()
-                            .background(Color.blue)
-                            .foregroundColor(.white)
-                            .cornerRadius(10)
-                        }
-                    }
-                }
-            } else {
-                if let selectedOption = selectedOption, let goal = battleGoals[selectedOption.0] {
-                    VStack {
-                        Text("Selected Goal: \(selectedOption.0)")
-                        Text("Goal: \(goal.0), Checkmarks: \(goal.1)")
-                    }
-                    .padding()
-                    .background(Color.gray)
-                    .foregroundColor(.white)
-                    .cornerRadius(10)
-                }
-            }
-        }
-    }
-}
+
 
 
 
@@ -399,68 +579,73 @@ struct StatsView: View {
     @Binding var level: Int16
     @Binding var xp: Int16
     @Binding var gold: Int16
-    
+    @Binding var health: Int16
     
     var body: some View{
-        let health : Int = getHealth(level:level, playableClass: playableClass)
        
-            
-        VStack(alignment: .center){
-            HStack{
-                Image(systemName: "heart.fill")
-                    .foregroundColor(.red)
-                Text("Health: ")
-                    .fontWeight(.bold)
-                    .foregroundColor(.red)
-                Text("\(health)")
-                    .foregroundColor(.red)
-                    .textFieldStyle(PlainTextFieldStyle())
-            }
-        }
+        VStack{
+            Text("Stats:")
+                .font(.title3)
+                .bold()
+                .foregroundColor(titleColor)
             Divider()
-        Grid(alignment: .leading) {
-            GridRow{
-                Image(systemName: "star.fill")
-                    .foregroundColor(.blue)
-                Text("XP: ")
-                    .fontWeight(.bold)
-                    .foregroundColor(.blue)
-                TextField("", value: $xp, formatter: NumberFormatter(), onCommit: {})
-                    .foregroundColor(.blue)
-                    .textFieldStyle(PlainTextFieldStyle())
-                    .frame(width: 50)
-                    .multilineTextAlignment(.trailing)
-                Stepper(value: $xp, in: 0...500, step: 1) {
-                    Text("")
+                .bold()
+                .foregroundColor(titleColor)
+            VStack(alignment: .center){
+                HStack{
+                    Image(systemName: "heart.fill")
+                        .foregroundColor(.red)
+                    Text("Health: ")
+                        .fontWeight(.bold)
+                        .foregroundColor(.red)
+                    Text("\(health)")
+                        .foregroundColor(.red)
+                        .textFieldStyle(PlainTextFieldStyle())
                 }
             }
-            GridRow{
-                Image(systemName: "dollarsign.circle.fill")
-                    .foregroundColor(Color.yellow)
-                    .brightness(0.2)
-                    .opacity(0.8)
-                Text("Gold: ")
-                    .font(.headline)
-                    .foregroundColor(Color.yellow)
-                    .brightness(0.2)
-                    .opacity(0.8)
-                TextField("", value: $gold, formatter: NumberFormatter(), onCommit: {})
-                    .foregroundColor(Color.yellow)
-                    .brightness(0.2)
-                    .opacity(0.8)
-                    .textFieldStyle(PlainTextFieldStyle())
-                    .frame(width: 50)
-                    .multilineTextAlignment(.trailing)
-                Stepper(value: $gold, in: 0...9999, step: 1) {
-                    Text("")
+            Divider()
+                .foregroundColor(titleColor)
+            Grid(alignment: .leading) {
+                GridRow{
+                    Image(systemName: "star.fill")
+                        .foregroundColor(.blue)
+                    Text("XP: ")
+                        .fontWeight(.bold)
+                        .foregroundColor(.blue)
+                    Text("\(xp)")
+                        .fontWeight(.bold)
+                        .foregroundColor(.blue)
+                    Stepper(value: $xp, in: 0...500, step: 1) {
+                        Text("")
+                    }
                 }
-                .foregroundColor(.red)
-                
+                GridRow{
+                    Image(systemName: "dollarsign.circle.fill")
+                        .foregroundColor(Color.yellow)
+                        .brightness(0.2)
+                        .opacity(0.8)
+                    Text("Gold: ")
+                        .font(.headline)
+                        .foregroundColor(Color.yellow)
+                        .brightness(0.2)
+                        .opacity(0.8)
+                    Text("\(gold)")
+                        .font(.headline)
+                        .foregroundColor(Color.yellow)
+                        .brightness(0.2)
+                        .opacity(0.8)
+                    Stepper(value: $gold, in: 0...9999, step: 1) {
+                        Text("")
+                    }
+                    .foregroundColor(.red)
+                    
+                }
             }
-        }
+            .padding(.bottom)
+        }.padding([.top, .leading, .trailing])
     }
     
-    func getHealth(level: Int16, playableClass: String) -> Int {
+    func getHealth(level: Int16, playableClass: String) -> Int16 {
             return (healthDict[playableClass]?[Int16(level)])!
         }
 }

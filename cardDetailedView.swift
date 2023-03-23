@@ -8,13 +8,19 @@
 import SwiftUI
 
 struct cardDetailedView: View {
-    
+    let mainBackgroundGradient = LinearGradient(
+        gradient: Gradient(colors: [Color.black, Color.cyan, Color.black]),
+        startPoint: .top, endPoint: .bottom)
     var card: Card
     
     var body: some View {
-        Image("\(card.name)")
-            .resizable()
-            .scaledToFit()
+        
+        ZStack{
+            mainBackgroundGradient.ignoresSafeArea()
+            Image("\(card.imgName)")
+                .resizable()
+                .scaledToFit()
+        }
     }
 }
 

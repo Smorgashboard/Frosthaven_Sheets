@@ -11,6 +11,14 @@ import CoreData
 struct CharacterInventoryView: View {
     @Environment(\.managedObjectContext) var moc
     var characterId: UUID
+    
+    let mainBackgroundGradient = LinearGradient(
+        gradient: Gradient(colors: [Color.black, Color.cyan, Color.black]),
+        startPoint: .top, endPoint: .bottom)
+    
+    private var fontColor: Color{.white}
+    private var tileColor: Color{CustomColor.otherGray}
+    private var borderColor: Color{CustomColor.blueish}
 
     @FetchRequest var characters: FetchedResults<Character>
     
@@ -34,95 +42,100 @@ struct CharacterInventoryView: View {
         let filteredItems = items.filter { item in
             charItems.contains(item.number)
         }
-        VStack{
-                Text("Your Items:")
-                .font(.title)
-                .fontWeight(.bold)
-            List{
+        DisclosureGroup( content: {
+            VStack{
+                /*Text("Your Items:")
+                    .font(.title2)
+                    .fontWeight(.bold)
+                    .foregroundColor(fontColor)
+                    .multilineTextAlignment(.center)
+                */
                 ForEach(filteredItems){ item in
                     DisclosureGroup("\(item.name)") {
-                            HStack{
-                                VStack{
-                                    HStack{
-                                        switch item.type{
-                                        case "boots":
-                                            Image("BootsLogo_White")
-                                                .resizable()
-                                                .aspectRatio(contentMode: .fit)
-                                                .frame(width: 20, height: 25)
-                                                .clipShape(Rectangle())
-                                                .shadow(radius: 5)
-                                        case "chest":
-                                            Image("ChestLogo_White")
-                                                .resizable()
-                                                .aspectRatio(contentMode: .fit)
-                                                .frame(width: 20, height: 25)
-                                                .clipShape(Rectangle())
-                                                .shadow(radius: 5)
-                                        case "1 hand" :
-                                            Image("1HandLogo_White")
-                                                .resizable()
-                                                .aspectRatio(contentMode: .fit)
-                                                .frame(width: 20, height: 25)
-                                                .clipShape(Rectangle())
-                                                .shadow(radius: 5)
-                                        case "2 hand" :
-                                            Image("2HandLogo_White")
-                                                .resizable()
-                                                .aspectRatio(contentMode: .fit)
-                                                .frame(width: 20, height: 25)
-                                                .clipShape(Rectangle())
-                                                .shadow(radius: 5)
-                                        case "helmet":
-                                            Image("HelmetLogo_White")
-                                                .resizable()
-                                                .aspectRatio(contentMode: .fit)
-                                                .frame(width: 20, height: 25)
-                                                .clipShape(Rectangle())
-                                                .shadow(radius: 5)
-                                        case "potion" :
-                                            Image("PotionLogo_White")
-                                                .resizable()
-                                                .aspectRatio(contentMode: .fit)
-                                                .frame(width: 20, height: 25)
-                                                .clipShape(Rectangle())
-                                                .shadow(radius: 5)
-                                        default:
-                                            Text("\(item.type)")
-                                        }
-                                        
-                                        switch item.use{
-                                        case "tap":
-                                            Image("TapIcon_White")
-                                                .resizable()
-                                                .aspectRatio(contentMode: .fit)
-                                                .frame(width: 20, height: 25)
-                                                .clipShape(Rectangle())
-                                                .shadow(radius: 5)
-                                        case "lost":
-                                            Image("LostIcon_White")
-                                                .resizable()
-                                                .aspectRatio(contentMode: .fit)
-                                                .frame(width: 20, height: 25)
-                                                .clipShape(Rectangle())
-                                                .shadow(radius: 5)
-                                        case "flip":
-                                            Image("FlipIcon_White")
-                                                .resizable()
-                                                .aspectRatio(contentMode: .fit)
-                                                .frame(width: 20, height: 25)
-                                                .clipShape(Rectangle())
-                                                .shadow(radius: 5)
-                                        case "perm":
-                                            Text("")
-                                        default:
-                                            Text("\(item.use)")
-                                        }
+                        HStack{
+                            VStack{
+                                HStack{
+                                    switch item.type{
+                                    case "boots":
+                                        Image("BootsLogo_White")
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(width: 20, height: 25)
+                                            .clipShape(Rectangle())
+                                            .shadow(radius: 5)
+                                    case "chest":
+                                        Image("ChestLogo_White")
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(width: 20, height: 25)
+                                            .clipShape(Rectangle())
+                                            .shadow(radius: 5)
+                                    case "1 hand" :
+                                        Image("1HandLogo_White")
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(width: 20, height: 25)
+                                            .clipShape(Rectangle())
+                                            .shadow(radius: 5)
+                                    case "2 hand" :
+                                        Image("2HandLogo_White")
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(width: 20, height: 25)
+                                            .clipShape(Rectangle())
+                                            .shadow(radius: 5)
+                                    case "helmet":
+                                        Image("HelmetLogo_White")
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(width: 20, height: 25)
+                                            .clipShape(Rectangle())
+                                            .shadow(radius: 5)
+                                    case "potion" :
+                                        Image("PotionLogo_White")
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(width: 20, height: 25)
+                                            .clipShape(Rectangle())
+                                            .shadow(radius: 5)
+                                    default:
+                                        Text("\(item.type)")
                                     }
-                                    Text("Cost: \(item.cost)")
+                                    
+                                    switch item.use{
+                                    case "tap":
+                                        Image("TapIcon_White")
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(width: 20, height: 25)
+                                            .clipShape(Rectangle())
+                                            .shadow(radius: 5)
+                                    case "lost":
+                                        Image("LostIcon_White")
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(width: 20, height: 25)
+                                            .clipShape(Rectangle())
+                                            .shadow(radius: 5)
+                                    case "flip":
+                                        Image("FlipIcon_White")
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(width: 20, height: 25)
+                                            .clipShape(Rectangle())
+                                            .shadow(radius: 5)
+                                    case "perm":
+                                        Text("")
+                                    default:
+                                        Text("\(item.use)")
+                                    }
                                 }
-                                Text("\(item.description)")
+                                Text("Cost: \(item.cost)")
                             }
+                            Text("\(item.description)")
+                        }
+                        Divider()
+                            .foregroundColor(tileColor)
                         HStack{
                             Button("Remove") {
                                 do {
@@ -132,18 +145,28 @@ struct CharacterInventoryView: View {
                                 }catch {
                                     print("Error saving new character: \(error.localizedDescription)")
                                 }
-                                    
+                                
                             }
                             
                         }
                     }
+                    .padding(.all)
+                    .background(CustomColor.darkGray)
+                }
+                
+                NavigationLink(destination: AddToInventoryView(characterId: characterId)) {
+                    Text("Add new items.")
                 }
             }
-            NavigationLink(destination: AddToInventoryView(characterId: characterId)) {
-                Text("Add new items.")
-            }
             
-        }.preferredColorScheme(.dark)
+        }, label: {
+            Text("Your Items:")
+                .foregroundColor(CustomColor.blueish)
+                .multilineTextAlignment(.center)
+                .font(.title3)
+                .bold()
+        })
+        .padding(.all)
     }
 }
 

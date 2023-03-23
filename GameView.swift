@@ -10,11 +10,17 @@ import CoreData
 
 struct GameView: View {
     var characterId: UUID
+    private var fontColor: Color{.white}
+    private var tileColor: Color{CustomColor.otherGray}
+    private var borderColor: Color{CustomColor.blueish}
+    private var titleColor: Color{CustomColor.blueish}
+    
+    let mainBackgroundGradient = LinearGradient(
+        gradient: Gradient(colors: [Color.black, Color.cyan, Color.black]),
+        startPoint: .top, endPoint: .bottom)
     
     @Environment(\.managedObjectContext) private var moc
     @FetchRequest var character: FetchedResults<Character>
-    
-    static var  accentColor: Color{.green}
     
     init(characterId: UUID) {
         self.characterId = characterId
@@ -27,112 +33,24 @@ struct GameView: View {
         self._character = FetchRequest(fetchRequest: request)
         
     }
-    
-    var lumber: Binding<Int16> {
-        Binding(
-            get: { character.first?.lumber ?? 0 },
-            set: { newValue in
-                guard let character = character.first else { return }
-                character.lumber = newValue
-                try? moc.save()
-            }
-        )
-    }
-    
-    var metal: Binding<Int16> {
-        Binding(
-            get: { character.first?.metal ?? 0 },
-            set: { newValue in
-                guard let character = character.first else { return }
-                character.metal = newValue
-                try? moc.save()
-            }
-        )
-    }
-    
-    var hide: Binding<Int16> {
-        Binding(
-            get: { character.first?.hide ?? 0 },
-            set: { newValue in
-                guard let character = character.first else { return }
-                character.hide = newValue
-                try? moc.save()
-            }
-        )
-    }
-    
-    var arrowvine: Binding<Int16> {
-        Binding(
-            get: { character.first?.arrowvine ?? 0 },
-            set: { newValue in
-                guard let character = character.first else { return }
-                character.arrowvine = newValue
-                try? moc.save()
-            }
-        )
-    }
-    
-    var axenut: Binding<Int16> {
-        Binding(
-            get: { character.first?.axenut ?? 0 },
-            set: { newValue in
-                guard let character = character.first else { return }
-                character.axenut = newValue
-                try? moc.save()
-            }
-        )
-    }
-    
-    var corpsecap: Binding<Int16> {
-        Binding(
-            get: { character.first?.corpsecap ?? 0 },
-            set: { newValue in
-                guard let character = character.first else { return }
-                character.corpsecap = newValue
-                try? moc.save()
-            }
-        )
-    }
-    
-    var flamefruit: Binding<Int16> {
-        Binding(
-            get: { character.first?.flamefruit ?? 0 },
-            set: { newValue in
-                guard let character = character.first else { return }
-                character.flamefruit = newValue
-                try? moc.save()
-            }
-        )
-    }
-    
-    var rockroot: Binding<Int16> {
-        Binding(
-            get: { character.first?.rockroot ?? 0 },
-            set: { newValue in
-                guard let character = character.first else { return }
-                character.rockroot = newValue
-                try? moc.save()
-            }
-        )
-    }
-    
-    var snowthistle: Binding<Int16> {
-        Binding(
-            get: { character.first?.snowthistle ?? 0 },
-            set: { newValue in
-                guard let character = character.first else { return }
-                character.snowthistle = newValue
-                try? moc.save()
-            }
-        )
-    }
-    
+   
     var xp: Binding<Int16> {
         Binding(
             get: { character.first?.xp ?? 0 },
             set: { newValue in
                 guard let character = character.first else { return }
                 character.xp = newValue
+                try? moc.save()
+            }
+        )
+    }
+    
+    var health: Binding<Int16> {
+        Binding(
+            get: { character.first?.health ?? 0 },
+            set: { newValue in
+                guard let character = character.first else { return }
+                character.health = newValue
                 try? moc.save()
             }
         )
@@ -159,62 +77,248 @@ struct GameView: View {
             }
         )
     }
+    
     var body: some View {
-        VStack{
-            BattleGoalsView()
-            Divider()
-            VStack{
-                Text("Stats:")
-                    .font(.title2)
-                    .fontWeight(.bold)
-                    .foregroundColor(.green)
-                    .multilineTextAlignment(.center)
-                HStack{
-                    Stepper(value: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Value@*/.constant(4)/*@END_MENU_TOKEN@*/, in: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Range@*/1...10/*@END_MENU_TOKEN@*/) {
-                        /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Label@*/Text("Stepper")/*@END_MENU_TOKEN@*/
-                    }
-                    Divider()
-                    Stepper(value: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Value@*/.constant(4)/*@END_MENU_TOKEN@*/, in: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Range@*/1...10/*@END_MENU_TOKEN@*/) {
-                        /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Label@*/Text("Stepper")/*@END_MENU_TOKEN@*/
-                    }
-                }
-                .frame(height:35)
-                Divider()
+        let charItems : [Int] = character.first!.inventoryItems!
+        
+        let filteredItems = items.filter { item in
+            charItems.contains(item.number)
+        }
+        
+            ZStack{
+                mainBackgroundGradient.ignoresSafeArea()
+                ScrollView{
                 VStack{
-                    Text("Your Items:")
-                        .font(.title2)
-                        .fontWeight(.bold)
-                        .foregroundColor(.green)
-                        .multilineTextAlignment(.center)
-                }
-                Divider()
-                VStack{
-                Text("Attack Deck:")
-                        .font(.title2)
-                        .fontWeight(.bold)
-                        .foregroundColor(.green)
-                        .multilineTextAlignment(.center)
-                }
-                Divider()
-                VStack{
-                    Text("Loot:")
-                        .font(.title2)
-                        .fontWeight(.bold)
-                        .foregroundColor(.green)
-                        .multilineTextAlignment(.center)
-                    Divider()
-                    Stepper(value: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Value@*/.constant(4)/*@END_MENU_TOKEN@*/, in: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Range@*/1...10/*@END_MENU_TOKEN@*/) {
-                        /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Label@*/Text("Stepper")/*@END_MENU_TOKEN@*/
+                    VStack{
+                        Divider()
+                        Text("Battle Goal:")
+                            .font(.title2)
+                            .fontWeight(.bold)
+                            .foregroundColor(titleColor)
+                            .multilineTextAlignment(.center)
+                        BattleGoalsView(characterId: characterId)
                     }
-                    Divider()
-                    ScrollView{
-                        ResourceTrackerView(axenut: axenut, lumber: lumber, metal: metal, hide: hide, arrowvine: arrowvine, corpsecap: corpsecap, flamefruit: flamefruit, rockroot: rockroot, snowthistle: snowthistle)
-                    }
+                    //.background(tileColor)
+                    //.cornerRadius(10)
+                    //.padding(.horizontal)
+                    //.shadow(color: borderColor.opacity(0.3), radius: 5, x: 5, y:5)
+                        VStack{
+                            Text("Stats:")
+                                .font(.title2)
+                                .fontWeight(.bold)
+                                .foregroundColor(titleColor)
+                                .multilineTextAlignment(.center)
+                                .padding(.vertical)
+                            HStack{
+                                
+                                Text("Health: \n\(health.wrappedValue)")
+                                    .fontWeight(.bold)
+                                    .foregroundColor(.red)
+                                    .multilineTextAlignment(.center)
+                                    .padding(.leading)
+                                Stepper(value: health, in: 0...50, step: 1) {
+                                    Text("")
+                                }
+                                Divider()
+                                
+                                Text("XP: \n\(xp.wrappedValue)")
+                                    .fontWeight(.bold)
+                                    .foregroundColor(.blue)
+                                    .multilineTextAlignment(.center)
+                                Stepper(value: xp, in: 0...500, step: 1) {
+                                    Text("")
+                                }.padding(.trailing)
+                            }
+                            HStack{
+                                Text("Gold: \(gold.wrappedValue)")
+                                    .font(.headline)
+                                    .foregroundColor(Color.yellow)
+                                    .brightness(0.2)
+                                    .opacity(0.8)
+                                    .multilineTextAlignment(.trailing)
+                                    .padding(.leading)
+                                Stepper(value: gold, in: 0...9999, step: 1) {
+                                    Text("")
+                                }.padding(.trailing)
+                            }
+                            .frame(height:35)
+                            Divider()
+                        }
+                        .background(tileColor)
+                        .cornerRadius(10)
+                        .padding(.horizontal)
+                        .shadow(color: borderColor.opacity(0.3), radius: 5, x: 5, y:5)
+                        VStack{
+                            Text("Your Items:")
+                                .font(.title2)
+                                .fontWeight(.bold)
+                                .foregroundColor(titleColor)
+                                .multilineTextAlignment(.center)
+                                .padding(.vertical)
+                            Divider()
+                            ForEach(filteredItems){ item in
+                                HStack{
+                                    Text("\(item.name) :")
+                                        .bold()
+                                        .font(.title3)
+                                        .foregroundColor(.blue)
+                                        .padding(.leading)
+                                    Spacer()
+                                    switch item.type{
+                                    case "boots":
+                                        Image("BootsLogo_White")
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(width: 20, height: 25)
+                                            .clipShape(Rectangle())
+                                            .shadow(radius: 5)
+                                            
+                                    case "chest":
+                                        Image("ChestLogo_White")
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(width: 20, height: 25)
+                                            .clipShape(Rectangle())
+                                            .shadow(radius: 5)
+                                            
+                                    case "1 hand" :
+                                        Image("1HandLogo_White")
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(width: 20, height: 25)
+                                            .clipShape(Rectangle())
+                                            .shadow(radius: 5)
+                                            
+                                    case "2 hand" :
+                                        Image("2HandLogo_White")
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(width: 20, height: 25)
+                                            .clipShape(Rectangle())
+                                            .shadow(radius: 5)
+                                            
+                                    case "helmet":
+                                        Image("HelmetLogo_White")
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(width: 20, height: 25)
+                                            .clipShape(Rectangle())
+                                            .shadow(radius: 5)
+                                            
+                                    case "potion" :
+                                        Image("PotionLogo_White")
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(width: 20, height: 25)
+                                            .clipShape(Rectangle())
+                                            .shadow(radius: 5)
+                                            
+                                    default:
+                                        Text("\(item.type)")
+                                    }
+                                    
+                                    switch item.use{
+                                    case "tap":
+                                        Image("TapIcon_White")
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(width: 20, height: 25)
+                                            .clipShape(Rectangle())
+                                            .shadow(radius: 5)
+                                           
+                                        tapToggleView(tapWord: "Tapped")
+                                    case "lost":
+                                        Image("LostIcon_White")
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(width: 20, height: 25)
+                                            .clipShape(Rectangle())
+                                            .shadow(radius: 5)
+                                            
+                                        lostToggleView(lostWord: "Lost")
+                                    case "flip":
+                                        Image("FlipIcon_White")
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(width: 20, height: 25)
+                                            .clipShape(Rectangle())
+                                            .shadow(radius: 5)
+                                            
+                                        flipToggleView(flipWord: "Flipped")
+                                    case "perm":
+                                        Text("")
+                                    default:
+                                        Text("\(item.use)")
+                                    }
+                                }
+                                HStack{
+                                    Text("\(item.description)")
+                                        .padding(.horizontal)
+                                }
+                                Divider()
+                            }
+                            
+                            
+                        }
+                        .background(tileColor)
+                        .cornerRadius(10)
+                        .padding(.horizontal)
+                        .shadow(color: borderColor.opacity(0.3), radius: 5, x: 5, y:5)
+                        VStack{
+                                Text("Attack Deck:")
+                                    .font(.title2)
+                                    .fontWeight(.bold)
+                                    .foregroundColor(titleColor)
+                                    .multilineTextAlignment(.center)
+                                    .padding(.vertical)
+                                AttackDeckView(characterId: characterId)
+                            
+                            Divider()
+                        }
+                        .background(tileColor)
+                        .cornerRadius(10)
+                        .padding(.horizontal)
+                        .shadow(color: borderColor.opacity(0.3), radius: 5, x: 5, y:5)
+                    
                 }
+                
             }
-            Divider()
-        }.preferredColorScheme(.dark)
+        }
     }
+    
 }
 
 
+struct flipToggleView: View {
+    
+    var flipWord: String
+    @State private var wordToggle = false
+    
+    var body: some View {
+            Toggle(flipWord, isOn: $wordToggle)
+            .padding(.trailing)
+        }
+}
+
+struct tapToggleView: View {
+    
+    var tapWord: String
+    @State private var wordToggle = false
+    
+    var body: some View {
+            Toggle(tapWord, isOn: $wordToggle)
+            .padding(.trailing)
+        }
+    
+}
+
+struct lostToggleView: View {
+    
+    var lostWord: String
+    @State private var wordToggle = false
+    
+    var body: some View {
+            Toggle(lostWord, isOn: $wordToggle)
+            .padding(.trailing)
+        }
+}

@@ -4,6 +4,7 @@
 //
 //  Created by Hackin Tosh on 3/3/23.
 //
+//
 
 import SwiftUI
 import CoreData
@@ -12,6 +13,8 @@ struct MasteryGoalsView: View {
     @Environment(\.managedObjectContext) var moc
     var characterId: UUID
     @FetchRequest var characters: FetchedResults<Character>
+    private var accentColor: Color{.white}
+    private var titleColor: Color{CustomColor.blueish}
     
     init(characterId: UUID){
         self.characterId = characterId
@@ -31,14 +34,22 @@ struct MasteryGoalsView: View {
     
     var body: some View {
         let character = characters.first!
-        VStack(alignment: .center){
-            
-            Text("Mastery Goals")
-        }
-        .foregroundColor(.green)
-        .multilineTextAlignment(.center)
-        .padding(.bottom)
-        VStack(alignment: .leading){
+        VStack{
+            VStack(alignment: .center){
+                
+                Text("Mastery Goals:")
+                    .foregroundColor(titleColor)
+                    .font(.title3)
+                    .bold()
+                    .padding(.vertical)
+                Divider()
+                    .foregroundColor(titleColor)
+                    .bold()
+            }
+            .foregroundColor(titleColor)
+            .multilineTextAlignment(.center)
+            .padding(.bottom)
+            VStack(alignment: .leading){
                 
                 ForEach(0 ..< masteries.count, id: \.self) { x in
                     HStack{
@@ -53,11 +64,12 @@ struct MasteryGoalsView: View {
                         ))
                         .padding(.trailing)
                         Text("\(masteries[x])")
-                            .foregroundColor(.green)
+                            .foregroundColor(accentColor)
                             .padding(.bottom)
                     }
+                }
             }
-        }
+        }.padding(.horizontal)
     }
 }
 
