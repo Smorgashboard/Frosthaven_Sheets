@@ -29,11 +29,30 @@ struct DrifterPerkyView: View {
         let character = characters.first!
         VStack{
             VStack{
-                Text("Perks")
-                    .foregroundColor(titleColor)
-                    .font(.title3)
-                    .bold()
-                    .padding(.vertical)
+                HStack{
+                    Text("Perks")
+                        .foregroundColor(titleColor)
+                        .font(.title3)
+                        .bold()
+                        .padding(.vertical)
+                    
+                    Menu{
+                        NavigationLink(destination: AttackDeckPreview(characterId: characterId)) {
+                            Text("View Current Modifier Deck")
+                                .font(.title3)
+                                .padding()
+                                .frame(maxWidth: .infinity, maxHeight: 40)
+                        }
+                        .background(Color.black)
+                        .foregroundColor(.blue)
+                        .cornerRadius(10)
+                        .padding(.horizontal)
+                    } label: {
+                        Image(systemName: "ellipsis.circle")
+                            .font(.system(size: 24))
+                    }
+                    .navigationTitle("Perks")
+                }
                 Divider()
                     .foregroundColor(titleColor)
                     .bold()
@@ -69,6 +88,8 @@ struct DrifterPerkyView: View {
                     ))
                     .padding(.trailing)
                     Text("Replace one (-1) card with one (+1) card").foregroundColor(accentColor)
+                        .lineLimit(nil)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
                 .padding(.bottom)
                 HStack{
@@ -84,6 +105,8 @@ struct DrifterPerkyView: View {
                     ))
                     .padding(.trailing)
                     Text("Replace one (-2) card with one (+0) card").foregroundColor(accentColor)
+                        .lineLimit(nil)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
                 .padding(.bottom)
                 HStack{
@@ -107,6 +130,8 @@ struct DrifterPerkyView: View {
                     ))
                     .padding(.trailing)
                     Text("Replace one (+1) card with two (+0) Move one of your character tokens backward one slot cards").foregroundColor(accentColor)
+                        .lineLimit(nil)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
                 .padding(.bottom)
                 HStack{
@@ -121,7 +146,9 @@ struct DrifterPerkyView: View {
                         }
                     ))
                     .padding(.trailing)
-                    Text("Replace two (+0) cards with two (Pierce 3 draw again) cards").foregroundColor(accentColor)
+                    Text("Replace two (+0) cards with two Pierce 3 draw again cards").foregroundColor(accentColor)
+                        .lineLimit(nil)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
                 .padding(.bottom)
             }
@@ -137,7 +164,9 @@ struct DrifterPerkyView: View {
                         }
                     ))
                     .padding(.trailing)
-                    Text("Replace two (+0) cards with two (Push 2 draw again) cards").foregroundColor(accentColor)
+                    Text("Replace two (+0) cards with two Push 2 draw again cards").foregroundColor(accentColor)
+                        .lineLimit(nil)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
                 .padding(.bottom)
                 HStack{
@@ -152,6 +181,8 @@ struct DrifterPerkyView: View {
                     ))
                     .padding(.trailing)
                     Text("Add one (+3) card").foregroundColor(accentColor)
+                        .lineLimit(nil)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
                 .padding(.bottom)
                 HStack{
@@ -174,7 +205,9 @@ struct DrifterPerkyView: View {
                         }
                     ))
                     .padding(.trailing)
-                    Text("Add one (+2 immobilize) card").foregroundColor(accentColor)
+                    Text("Add one (+2) Immobilize card").foregroundColor(accentColor)
+                        .lineLimit(nil)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
                 .padding(.bottom)
                 HStack{
@@ -189,7 +222,9 @@ struct DrifterPerkyView: View {
                         }
                     ))
                     .padding(.trailing)
-                    Text("Add two (+1 heal self redraw) cards").foregroundColor(accentColor)
+                    Text("Add two (+1) Heal self redraw cards").foregroundColor(accentColor)
+                        .lineLimit(nil)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
                 .padding(.bottom)
                 HStack{
@@ -204,6 +239,8 @@ struct DrifterPerkyView: View {
                     ))
                     .padding(.trailing)
                     Text("Ignore scenario effects and add one (+1) card").foregroundColor(accentColor)
+                        .lineLimit(nil)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
                 .padding(.bottom)
                 HStack{
@@ -218,6 +255,8 @@ struct DrifterPerkyView: View {
                     ))
                     .padding(.trailing)
                     Text("Ignore item (-1) effects and add one (+1) card").foregroundColor(accentColor)
+                        .lineLimit(nil)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
             }
             .padding(.bottom)
@@ -243,6 +282,8 @@ struct DrifterPerkyView: View {
                     ))
                     .padding(.trailing)
                     Text("Whenever you long rest, you may move one of your character tokens backward one slot (REQUIRES BOTH CHECKS TO BE UNLOCKED!)").foregroundColor(accentColor)
+                        .lineLimit(nil)
+                        .fixedSize(horizontal: false, vertical: true)
                     
                 }
                 .padding(.bottom)
@@ -272,6 +313,8 @@ struct DrifterPerkyView: View {
                     ))
                     .padding(.trailing)
                     Text("At the end of each scenario, you may discard up to two loot cards, except Random Item, to draw that many new loot cards").foregroundColor(accentColor)
+                        .lineLimit(nil)
+                        .fixedSize(horizontal: false, vertical: true)
                     
                 }
                 .padding(.bottom)

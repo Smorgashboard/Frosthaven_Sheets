@@ -30,11 +30,30 @@ struct BlinkbladePerkyView: View {
         let character = characters.first!
         VStack{
             VStack{
-                Text("Perks")
-                    .foregroundColor(titleColor)
-                    .font(.title3)
-                    .bold()
-                    .padding(.vertical)
+                HStack{
+                    Text("Perks")
+                        .foregroundColor(titleColor)
+                        .font(.title3)
+                        .bold()
+                        .padding(.vertical)
+                    
+                    Menu{
+                        NavigationLink(destination: AttackDeckPreview(characterId: characterId)) {
+                            Text("View Current Modifier Deck")
+                                .font(.title3)
+                                .padding()
+                                .frame(maxWidth: .infinity, maxHeight: 40)
+                        }
+                        .background(Color.black)
+                        .foregroundColor(.blue)
+                        .cornerRadius(10)
+                        .padding(.horizontal)
+                    } label: {
+                        Image(systemName: "ellipsis.circle")
+                            .font(.system(size: 24))
+                    }
+                    .navigationTitle("Perks")
+                }
                 Divider()
                     .foregroundColor(titleColor)
                     .bold()
@@ -52,6 +71,8 @@ struct BlinkbladePerkyView: View {
                     ))
                     .padding(.trailing)
                     Text("Remove one (-2) card").foregroundColor(accentColor)
+                        .lineLimit(nil)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
                 .padding(.bottom)
                 HStack{
@@ -75,6 +96,8 @@ struct BlinkbladePerkyView: View {
                     ))
                     .padding(.trailing)
                     Text("Replace one (-1) card with one (+1) card").foregroundColor(accentColor)
+                        .lineLimit(nil)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
                 .padding(.bottom)
                 HStack{
@@ -97,7 +120,9 @@ struct BlinkbladePerkyView: View {
                         }
                     ))
                     .padding(.trailing)
-                    Text("Replace one (-1) card with one (+0 wound) card").foregroundColor(accentColor)
+                    Text("Replace one (-1) card with one (+0) Wound card").foregroundColor(accentColor)
+                        .lineLimit(nil)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
                 .padding(.bottom)
                 HStack{
@@ -120,7 +145,9 @@ struct BlinkbladePerkyView: View {
                         }
                     ))
                     .padding(.trailing)
-                    Text("Replace one (+0) card with one (+1 immobilize) card").foregroundColor(accentColor)
+                    Text("Replace one (+0) card with one (+1) Immobilize card").foregroundColor(accentColor)
+                        .lineLimit(nil)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
                 .padding(.bottom)
                 HStack{
@@ -152,7 +179,9 @@ struct BlinkbladePerkyView: View {
                         }
                     ))
                     .padding(.trailing)
-                    Text("Replace one(+0) card with one Place this card in your active area. On your next attack, discard this card to add +2 draw again card").foregroundColor(accentColor)
+                    Text("Replace one (+0) card with one Place this card in your active area. On your next attack, discard this card to add (+2) draw again card").foregroundColor(accentColor)
+                        .lineLimit(nil)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
                 .padding(.bottom)
                 HStack{
@@ -167,6 +196,8 @@ struct BlinkbladePerkyView: View {
                     ))
                     .padding(.trailing)
                     Text("Replace two (+1) cards with two (+2) cards").foregroundColor(accentColor)
+                        .lineLimit(nil)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
                 .padding(.bottom)
                 HStack{
@@ -189,7 +220,9 @@ struct BlinkbladePerkyView: View {
                         }
                     ))
                     .padding(.trailing)
-                    Text("Add one (-1) Gain 1 turn card").foregroundColor(accentColor)
+                    Text("Add one (-1) Gain 1 Time token card").foregroundColor(accentColor)
+                        .lineLimit(nil)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
                 .padding(.bottom)
                 HStack{
@@ -212,7 +245,9 @@ struct BlinkbladePerkyView: View {
                         }
                     ))
                     .padding(.trailing)
-                    Text("Add one (+2 regenerate self draw again) card").foregroundColor(accentColor)
+                    Text("Add one (+2) Regenerate self draw again card").foregroundColor(accentColor)
+                        .lineLimit(nil)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
                 .padding(.bottom)
             }
@@ -229,6 +264,8 @@ struct BlinkbladePerkyView: View {
                     ))
                     .padding(.trailing)
                     Text("Whenever you short rest, you may spend one unspent item for no effect to recover a different spent item").foregroundColor(accentColor)
+                        .lineLimit(nil)
+                        .fixedSize(horizontal: false, vertical: true)
                     
                 }
                 .padding(.bottom)
@@ -243,7 +280,9 @@ struct BlinkbladePerkyView: View {
                         }
                     ))
                     .padding(.trailing)
-                    Text("At the start of your fist turn each scenario, you may perform move 3").foregroundColor(accentColor)
+                    Text("At the start of your fist turn each scenario, you may perform Move 3").foregroundColor(accentColor)
+                        .lineLimit(nil)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
                 .padding(.bottom)
                 HStack{
@@ -258,6 +297,8 @@ struct BlinkbladePerkyView: View {
                     ))
                     .padding(.trailing)
                     Text("Whenever you would gain immobilize prevent the condition").foregroundColor(accentColor)
+                        .lineLimit(nil)
+                        .fixedSize(horizontal: false, vertical: true)
                     
                 }
                 .padding(.bottom)

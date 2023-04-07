@@ -15,12 +15,27 @@
 		D6099D7229AE6B2500C867AA /* HealthValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6099D7129AE6B2400C867AA /* HealthValues.swift */; };
 		D6099D7429AE841F00C867AA /* xpDict.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6099D7329AE841F00C867AA /* xpDict.swift */; };
 		D6099D7629AEBE6E00C867AA /* perkDict.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6099D7529AEBE6D00C867AA /* perkDict.swift */; };
+		D610C69129CF3A21001776A2 /* FrozenFistPerkyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D610C69029CF3A21001776A2 /* FrozenFistPerkyView.swift */; };
+		D610C69329CF3B20001776A2 /* HivePerkyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D610C69229CF3B20001776A2 /* HivePerkyView.swift */; };
+		D610C69529CF3B3C001776A2 /* MetalMosaicPerkyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D610C69429CF3B3C001776A2 /* MetalMosaicPerkyView.swift */; };
+		D610C69729CF3B50001776A2 /* DeepwraithPerkyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D610C69629CF3B50001776A2 /* DeepwraithPerkyView.swift */; };
+		D610C69929CF3B64001776A2 /* CrashingTidePerkyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D610C69829CF3B64001776A2 /* CrashingTidePerkyView.swift */; };
+		D610C69B29CF3B79001776A2 /* InfuserPerkyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D610C69A29CF3B79001776A2 /* InfuserPerkyView.swift */; };
+		D610C69D29CF3B8F001776A2 /* PyroclastPerkyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D610C69C29CF3B8F001776A2 /* PyroclastPerkyView.swift */; };
+		D610C69F29CF3BA5001776A2 /* ShattersongPerkyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D610C69E29CF3BA5001776A2 /* ShattersongPerkyView.swift */; };
+		D610C6A129CF3BB9001776A2 /* TrapperPerkyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D610C6A029CF3BB9001776A2 /* TrapperPerkyView.swift */; };
+		D610C6A329CF3BE6001776A2 /* PainConduitPerkyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D610C6A229CF3BE6001776A2 /* PainConduitPerkyView.swift */; };
+		D610C6A529CF3C01001776A2 /* SnowdancerPerkyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D610C6A429CF3C01001776A2 /* SnowdancerPerkyView.swift */; };
+		D611E24429E0399400939A41 /* NotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D611E24329E0399400939A41 /* NotesView.swift */; };
+		D64D331129CCEC760075D6B3 /* UnlockAllCharsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64D331029CCEC760075D6B3 /* UnlockAllCharsView.swift */; };
+		D64D331329CCEE5D0075D6B3 /* UnlockAllCharacters.storekit in Resources */ = {isa = PBXBuildFile; fileRef = D64D331229CCEE5D0075D6B3 /* UnlockAllCharacters.storekit */; };
+		D64D331529CDED3C0075D6B3 /* PurchaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64D331429CDED3C0075D6B3 /* PurchaseManager.swift */; };
 		D664FC0429C518BF0015398C /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D664FC0329C518BF0015398C /* LoadingView.swift */; };
 		D664FC0829C51A050015398C /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D664FC0729C51A050015398C /* MainView.swift */; };
 		D66FCBFA29AB221F006FE519 /* Frost_digital_sheetsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66FCBF929AB221F006FE519 /* Frost_digital_sheetsApp.swift */; };
 		D66FCBFE29AB2221006FE519 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D66FCBFD29AB2221006FE519 /* Assets.xcassets */; };
 		D66FCC0129AB2221006FE519 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D66FCC0029AB2221006FE519 /* Preview Assets.xcassets */; };
-		D66FCC0F29AB2276006FE519 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66FCC0E29AB2276006FE519 /* Character.swift */; };
+		D66FCC0F29AB2276006FE519 /* Classes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66FCC0E29AB2276006FE519 /* Classes.swift */; };
 		D66FCC1129AB22B7006FE519 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66FCC1029AB22B7006FE519 /* Card.swift */; };
 		D66FCC1329AB22D2006FE519 /* cardStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66FCC1229AB22D2006FE519 /* cardStore.swift */; };
 		D66FCC1529AB22F7006FE519 /* items.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66FCC1429AB22F7006FE519 /* items.swift */; };
@@ -51,6 +66,10 @@
 		D6D3866329BF5A4D00A4F2ED /* EffectsLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = D6D3866229BF5A4D00A4F2ED /* EffectsLibrary */; };
 		D6D3866529C2835F00A4F2ED /* DeckSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D3866429C2835F00A4F2ED /* DeckSelectionView.swift */; };
 		D6D3866D29C4C54900A4F2ED /* unlockCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D3866C29C4C54900A4F2ED /* unlockCardView.swift */; };
+		D6EB0DCC29DC6B7300AD94C2 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6EB0DCB29DC6B7300AD94C2 /* Settings.swift */; };
+		D6EB0DCE29DC6BF600AD94C2 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6EB0DCD29DC6BF600AD94C2 /* SettingsView.swift */; };
+		D6FF1AD729D5E28B0020E3E1 /* AttackDeckPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FF1AD629D5E28B0020E3E1 /* AttackDeckPreview.swift */; };
+		D6FF1AD929D61D2D0020E3E1 /* Characteristics.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FF1AD829D61D2D0020E3E1 /* Characteristics.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +81,21 @@
 		D6099D7129AE6B2400C867AA /* HealthValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthValues.swift; sourceTree = "<group>"; };
 		D6099D7329AE841F00C867AA /* xpDict.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xpDict.swift; sourceTree = "<group>"; };
 		D6099D7529AEBE6D00C867AA /* perkDict.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = perkDict.swift; sourceTree = "<group>"; };
+		D610C69029CF3A21001776A2 /* FrozenFistPerkyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrozenFistPerkyView.swift; sourceTree = "<group>"; };
+		D610C69229CF3B20001776A2 /* HivePerkyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HivePerkyView.swift; sourceTree = "<group>"; };
+		D610C69429CF3B3C001776A2 /* MetalMosaicPerkyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalMosaicPerkyView.swift; sourceTree = "<group>"; };
+		D610C69629CF3B50001776A2 /* DeepwraithPerkyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepwraithPerkyView.swift; sourceTree = "<group>"; };
+		D610C69829CF3B64001776A2 /* CrashingTidePerkyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrashingTidePerkyView.swift; sourceTree = "<group>"; };
+		D610C69A29CF3B79001776A2 /* InfuserPerkyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfuserPerkyView.swift; sourceTree = "<group>"; };
+		D610C69C29CF3B8F001776A2 /* PyroclastPerkyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PyroclastPerkyView.swift; sourceTree = "<group>"; };
+		D610C69E29CF3BA5001776A2 /* ShattersongPerkyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShattersongPerkyView.swift; sourceTree = "<group>"; };
+		D610C6A029CF3BB9001776A2 /* TrapperPerkyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrapperPerkyView.swift; sourceTree = "<group>"; };
+		D610C6A229CF3BE6001776A2 /* PainConduitPerkyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PainConduitPerkyView.swift; sourceTree = "<group>"; };
+		D610C6A429CF3C01001776A2 /* SnowdancerPerkyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnowdancerPerkyView.swift; sourceTree = "<group>"; };
+		D611E24329E0399400939A41 /* NotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesView.swift; sourceTree = "<group>"; };
+		D64D331029CCEC760075D6B3 /* UnlockAllCharsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockAllCharsView.swift; sourceTree = "<group>"; };
+		D64D331229CCEE5D0075D6B3 /* UnlockAllCharacters.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = UnlockAllCharacters.storekit; sourceTree = "<group>"; };
+		D64D331429CDED3C0075D6B3 /* PurchaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseManager.swift; sourceTree = "<group>"; };
 		D664FC0329C518BF0015398C /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		D664FC0729C51A050015398C /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		D66FCBF629AB221F006FE519 /* Frosthacker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Frosthacker.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -69,7 +103,7 @@
 		D66FCBFD29AB2221006FE519 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D66FCC0029AB2221006FE519 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D66FCC0729AB2221006FE519 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D66FCC0E29AB2276006FE519 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		D66FCC0E29AB2276006FE519 /* Classes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Classes.swift; sourceTree = "<group>"; };
 		D66FCC1029AB22B7006FE519 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		D66FCC1229AB22D2006FE519 /* cardStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cardStore.swift; sourceTree = "<group>"; };
 		D66FCC1429AB22F7006FE519 /* items.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = items.swift; sourceTree = "<group>"; };
@@ -99,6 +133,10 @@
 		D6C8225729C743B400E3422F /* CardListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListView.swift; sourceTree = "<group>"; };
 		D6D3866429C2835F00A4F2ED /* DeckSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckSelectionView.swift; sourceTree = "<group>"; };
 		D6D3866C29C4C54900A4F2ED /* unlockCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = unlockCardView.swift; sourceTree = "<group>"; };
+		D6EB0DCB29DC6B7300AD94C2 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		D6EB0DCD29DC6BF600AD94C2 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		D6FF1AD629D5E28B0020E3E1 /* AttackDeckPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttackDeckPreview.swift; sourceTree = "<group>"; };
+		D6FF1AD829D61D2D0020E3E1 /* Characteristics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Characteristics.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,13 +154,18 @@
 		D66FCBED29AB221F006FE519 = {
 			isa = PBXGroup;
 			children = (
+				D64D331429CDED3C0075D6B3 /* PurchaseManager.swift */,
+				D64D331029CCEC760075D6B3 /* UnlockAllCharsView.swift */,
+				D64D331229CCEE5D0075D6B3 /* UnlockAllCharacters.storekit */,
 				D664FC0329C518BF0015398C /* LoadingView.swift */,
+				D6FF1AD629D5E28B0020E3E1 /* AttackDeckPreview.swift */,
 				D699F9A729BA2E98002236C6 /* AttackDeckView.swift */,
 				D677700C29B63B4200262A9D /* AddToInventoryView.swift */,
 				D677700A29B63B2500262A9D /* CharacterInventoryView.swift */,
 				D677700829B5F4DA00262A9D /* InventoryStoreView.swift */,
 				D677700629B2B5FB00262A9D /* ResourceTrackerView.swift */,
 				D677700429B2AABE00262A9D /* PerkPointView.swift */,
+				D6EB0DCD29DC6BF600AD94C2 /* SettingsView.swift */,
 				D6776FF729B173A300262A9D /* perkyviews */,
 				D6099D6929AD8D6600C867AA /* PersistenceController.swift */,
 				D66FCC0D29AB2264006FE519 /* Models */,
@@ -135,6 +178,7 @@
 				D66FCC2029AB2662006FE519 /* CharacterSelectionView.swift */,
 				D66FCC1E29AB2642006FE519 /* GameView.swift */,
 				D66FCC1A29AB25BF006FE519 /* CharacterSelectedView.swift */,
+				D611E24329E0399400939A41 /* NotesView.swift */,
 				D6735A3B29C9FE4E006D8787 /* BattleGoalsView.swift */,
 				D664FC0729C51A050015398C /* MainView.swift */,
 				D6C8225729C743B400E3422F /* CardListView.swift */,
@@ -177,7 +221,7 @@
 			isa = PBXGroup;
 			children = (
 				D6C8225529C6667D00E3422F /* FAQS.swift */,
-				D66FCC0E29AB2276006FE519 /* Character.swift */,
+				D66FCC0E29AB2276006FE519 /* Classes.swift */,
 				D66FCC1029AB22B7006FE519 /* Card.swift */,
 				D66FCC1229AB22D2006FE519 /* cardStore.swift */,
 				D66FCC1429AB22F7006FE519 /* items.swift */,
@@ -187,6 +231,8 @@
 				D6099D7129AE6B2400C867AA /* HealthValues.swift */,
 				D6099D7329AE841F00C867AA /* xpDict.swift */,
 				D6099D7529AEBE6D00C867AA /* perkDict.swift */,
+				D6FF1AD829D61D2D0020E3E1 /* Characteristics.swift */,
+				D6EB0DCB29DC6B7300AD94C2 /* Settings.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -200,6 +246,17 @@
 				D677700029B177DF00262A9D /* BannerSpearPerkyView.swift */,
 				D6776FFC29B177C100262A9D /* DeathwalkerPerkyView.swift */,
 				D6776FFA29B177B200262A9D /* BlinkbladePerkyView.swift */,
+				D610C69029CF3A21001776A2 /* FrozenFistPerkyView.swift */,
+				D610C69229CF3B20001776A2 /* HivePerkyView.swift */,
+				D610C69429CF3B3C001776A2 /* MetalMosaicPerkyView.swift */,
+				D610C69629CF3B50001776A2 /* DeepwraithPerkyView.swift */,
+				D610C69829CF3B64001776A2 /* CrashingTidePerkyView.swift */,
+				D610C69A29CF3B79001776A2 /* InfuserPerkyView.swift */,
+				D610C69C29CF3B8F001776A2 /* PyroclastPerkyView.swift */,
+				D610C69E29CF3BA5001776A2 /* ShattersongPerkyView.swift */,
+				D610C6A029CF3BB9001776A2 /* TrapperPerkyView.swift */,
+				D610C6A229CF3BE6001776A2 /* PainConduitPerkyView.swift */,
+				D610C6A429CF3C01001776A2 /* SnowdancerPerkyView.swift */,
 			);
 			path = perkyviews;
 			sourceTree = "<group>";
@@ -270,6 +327,7 @@
 			files = (
 				D66FCC0129AB2221006FE519 /* Preview Assets.xcassets in Resources */,
 				D66FCBFE29AB2221006FE519 /* Assets.xcassets in Resources */,
+				D64D331329CCEE5D0075D6B3 /* UnlockAllCharacters.storekit in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,20 +339,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				D677700329B2564200262A9D /* MasteryGoalsView.swift in Sources */,
+				D610C69929CF3B64001776A2 /* CrashingTidePerkyView.swift in Sources */,
 				D66FCC1529AB22F7006FE519 /* items.swift in Sources */,
 				D6776FF629B157F200262A9D /* BoneshaperPerkyView.swift in Sources */,
+				D610C69D29CF3B8F001776A2 /* PyroclastPerkyView.swift in Sources */,
 				D677700729B2B5FB00262A9D /* ResourceTrackerView.swift in Sources */,
 				D66FCC1B29AB25BF006FE519 /* CharacterSelectedView.swift in Sources */,
 				D6099D6C29ADC7AD00C867AA /* retirementGoals.swift in Sources */,
+				D610C69F29CF3BA5001776A2 /* ShattersongPerkyView.swift in Sources */,
 				D66FCC1129AB22B7006FE519 /* Card.swift in Sources */,
+				D610C69329CF3B20001776A2 /* HivePerkyView.swift in Sources */,
 				D66FCC1929AB2589006FE519 /* cardDetailedView.swift in Sources */,
+				D610C69129CF3A21001776A2 /* FrozenFistPerkyView.swift in Sources */,
 				D677700529B2AABE00262A9D /* PerkPointView.swift in Sources */,
 				D66FCC1329AB22D2006FE519 /* cardStore.swift in Sources */,
+				D611E24429E0399400939A41 /* NotesView.swift in Sources */,
+				D64D331129CCEC760075D6B3 /* UnlockAllCharsView.swift in Sources */,
 				D6099D7629AEBE6E00C867AA /* perkDict.swift in Sources */,
 				D677700129B177DF00262A9D /* BannerSpearPerkyView.swift in Sources */,
+				D6EB0DCC29DC6B7300AD94C2 /* Settings.swift in Sources */,
+				D610C6A329CF3BE6001776A2 /* PainConduitPerkyView.swift in Sources */,
 				D6099D7229AE6B2500C867AA /* HealthValues.swift in Sources */,
 				D6C8225629C6667D00E3422F /* FAQS.swift in Sources */,
-				D66FCC0F29AB2276006FE519 /* Character.swift in Sources */,
+				D66FCC0F29AB2276006FE519 /* Classes.swift in Sources */,
 				D66FCC2129AB2662006FE519 /* CharacterSelectionView.swift in Sources */,
 				D6099D6A29AD8D6600C867AA /* PersistenceController.swift in Sources */,
 				D6099D6E29AE44F800C867AA /* Masteries.swift in Sources */,
@@ -302,20 +369,29 @@
 				D66FCC2529AB26B1006FE519 /* DeckView.swift in Sources */,
 				D66FCC2329AB269C006FE519 /* CharacterCreationView.swift in Sources */,
 				D677700929B5F4DA00262A9D /* InventoryStoreView.swift in Sources */,
+				D64D331529CDED3C0075D6B3 /* PurchaseManager.swift in Sources */,
 				D6C8225829C743B400E3422F /* CardListView.swift in Sources */,
+				D610C69B29CF3B79001776A2 /* InfuserPerkyView.swift in Sources */,
 				D6D3866D29C4C54900A4F2ED /* unlockCardView.swift in Sources */,
+				D610C69529CF3B3C001776A2 /* MetalMosaicPerkyView.swift in Sources */,
+				D610C6A129CF3BB9001776A2 /* TrapperPerkyView.swift in Sources */,
 				D677700B29B63B2500262A9D /* CharacterInventoryView.swift in Sources */,
+				D6FF1AD929D61D2D0020E3E1 /* Characteristics.swift in Sources */,
 				D69A44A929AB9799001D5908 /* Characters.xcdatamodeld in Sources */,
 				D664FC0829C51A050015398C /* MainView.swift in Sources */,
 				D699F9A829BA2E98002236C6 /* AttackDeckView.swift in Sources */,
+				D610C69729CF3B50001776A2 /* DeepwraithPerkyView.swift in Sources */,
 				D66FCC1F29AB2642006FE519 /* GameView.swift in Sources */,
 				D6776FF929B173C600262A9D /* DrifterPerkyView.swift in Sources */,
+				D610C6A529CF3C01001776A2 /* SnowdancerPerkyView.swift in Sources */,
 				D6099D7429AE841F00C867AA /* xpDict.swift in Sources */,
 				D6C8225429C60C3300E3422F /* FAQView.swift in Sources */,
+				D6EB0DCE29DC6BF600AD94C2 /* SettingsView.swift in Sources */,
 				D6776FFF29B177D100262A9D /* GeminatePerkyView.swift in Sources */,
 				D6735A3C29C9FE4E006D8787 /* BattleGoalsView.swift in Sources */,
 				D6776FFB29B177B200262A9D /* BlinkbladePerkyView.swift in Sources */,
 				D66FCBFA29AB221F006FE519 /* Frost_digital_sheetsApp.swift in Sources */,
+				D6FF1AD729D5E28B0020E3E1 /* AttackDeckPreview.swift in Sources */,
 				D6099D4029AD3B0100C867AA /* CheckBoxView.swift in Sources */,
 				D6776FFD29B177C100262A9D /* DeathwalkerPerkyView.swift in Sources */,
 				D6099D7029AE481A00C867AA /* BattleGoals.swift in Sources */,
@@ -448,12 +524,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Frost_digital_sheets/Preview Content\"";
 				DEVELOPMENT_TEAM = 9HGQFWWAVQ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Frosthacker;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.board-games";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -464,8 +543,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "Test.Frost-digital-sheets";
+				PRODUCT_BUNDLE_IDENTIFIER = prod.frosthacker;
 				PRODUCT_NAME = Frosthacker;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -477,12 +557,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Frost_digital_sheets/Preview Content\"";
 				DEVELOPMENT_TEAM = 9HGQFWWAVQ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Frosthacker;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.board-games";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -493,8 +576,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "Test.Frost-digital-sheets";
+				PRODUCT_BUNDLE_IDENTIFIER = prod.frosthacker;
 				PRODUCT_NAME = Frosthacker;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

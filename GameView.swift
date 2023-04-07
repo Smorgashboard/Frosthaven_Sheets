@@ -56,6 +56,7 @@ struct GameView: View {
         )
     }
     
+    
     var gold: Binding<Int16> {
         Binding(
             get: { character.first?.gold ?? 0 },
@@ -77,6 +78,8 @@ struct GameView: View {
             }
         )
     }
+    
+    @State private var health2: Int = 0
     
     var body: some View {
         let charItems : [Int] = character.first!.inventoryItems!
@@ -111,12 +114,12 @@ struct GameView: View {
                                 .padding(.vertical)
                             HStack{
                                 
-                                Text("Health: \n\(health.wrappedValue)")
+                                Text("Health: \n\(health2)")
                                     .fontWeight(.bold)
                                     .foregroundColor(.red)
                                     .multilineTextAlignment(.center)
                                     .padding(.leading)
-                                Stepper(value: health, in: 0...50, step: 1) {
+                                Stepper(value: $health2, in: 0...50, step: 1) {
                                     Text("")
                                 }
                                 Divider()
@@ -156,15 +159,15 @@ struct GameView: View {
                                 .multilineTextAlignment(.center)
                                 .padding(.vertical)
                             Divider()
-                            ForEach(filteredItems){ item in
+                            ForEach(filteredItems.indices, id: \.self){ index in
                                 HStack{
-                                    Text("\(item.name) :")
+                                    Text("\(filteredItems[index].name) :")
                                         .bold()
                                         .font(.title3)
                                         .foregroundColor(.blue)
                                         .padding(.leading)
                                     Spacer()
-                                    switch item.type{
+                                    switch filteredItems[index].type{
                                     case "boots":
                                         Image("BootsLogo_White")
                                             .resizable()
@@ -214,10 +217,10 @@ struct GameView: View {
                                             .shadow(radius: 5)
                                             
                                     default:
-                                        Text("\(item.type)")
+                                        Text("\(filteredItems[index].type)")
                                     }
                                     
-                                    switch item.use{
+                                    switch filteredItems[index].use{
                                     case "tap":
                                         Image("TapIcon_White")
                                             .resizable()
@@ -248,11 +251,11 @@ struct GameView: View {
                                     case "perm":
                                         Text("")
                                     default:
-                                        Text("\(item.use)")
+                                        Text("\(filteredItems[index].use)")
                                     }
                                 }
                                 HStack{
-                                    Text("\(item.description)")
+                                    Text("\(filteredItems[index].description)")
                                         .padding(.horizontal)
                                 }
                                 Divider()
@@ -265,12 +268,7 @@ struct GameView: View {
                         .padding(.horizontal)
                         .shadow(color: borderColor.opacity(0.3), radius: 5, x: 5, y:5)
                         VStack{
-                                Text("Attack Deck:")
-                                    .font(.title2)
-                                    .fontWeight(.bold)
-                                    .foregroundColor(titleColor)
-                                    .multilineTextAlignment(.center)
-                                    .padding(.vertical)
+                                
                                 AttackDeckView(characterId: characterId)
                             
                             Divider()
@@ -284,6 +282,14 @@ struct GameView: View {
                 
             }
         }
+            .onAppear {
+                if character.first!.playableClass == "painconduit" && character.first!.unlockperk18 && character.first!.unlockperk17 {
+                    health2 = Int((healthDict[character.first!.playableClass!]?[Int16(character.first!.level)])! + 5)
+                } else {
+                    health2 = Int((healthDict[character.first!.playableClass!]?[Int16(character.first!.level)])!)
+                }
+                }
+
     }
     
 }

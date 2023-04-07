@@ -286,6 +286,10 @@ struct CharacterSelectedView: View {
         )
     }
 
+    var characteristics: [String] {
+        guard let playableClass = character.first?.playableClass else { return [] }
+        return charDict[playableClass] ?? []
+    }
     
     var body: some View {
         
@@ -348,6 +352,28 @@ struct CharacterSelectedView: View {
                                     DeathwalkerPerkyView(characterId: characterId)
                                 case "blinkblade" :
                                     BlinkbladePerkyView(characterId: characterId)
+                                case "frozenfist":
+                                    FrozenFistPerkyView(characterId: characterId)
+                                case "hive":
+                                    HivePerkyView(characterId: characterId)
+                                case "metalmosaic":
+                                    MetalMosaicPerkyView(characterId: characterId)
+                                case "deepwraith":
+                                    DeepwraithPerkyView(characterId: characterId)
+                                case "crashingtide":
+                                    CrashingTidePerkyView(characterId: characterId)
+                                case "infuser":
+                                    InfuserPerkyView(characterId: characterId)
+                                case "pyroclast":
+                                    PyroclastPerkyView(characterId: characterId)
+                                case "shattersong":
+                                    ShattersongPerkyView(characterId: characterId)
+                                case "trapper":
+                                    TrapperPerkyView(characterId: characterId)
+                                case "painconduit":
+                                    PainConduitPerkyView(characterId: characterId)
+                                case "snowdancer":
+                                    SnowdancerPerkyView(characterId: characterId)
                                 default:
                                     Text("ERROR")
                                 }
@@ -411,13 +437,48 @@ struct CharacterSelectedView: View {
                     Text("Deck")
                 }
                 .tag(4)
+            
+            NoteView(characterId: characterId)
+            
+                .tabItem {
+                    Image(systemName: "list.bullet.clipboard")
+                    Text("Notes")
+                }
+                .tag(5)
         }
         .onChange(of: selectedTab) { newValue in
             if newValue == 1 {
                 checkCounter()
+                updateHealth()
             }
             
         }
+    }
+    
+    func updateHealth() {
+        //This is a fix for the stupid pain conduit health issue
+        if character.first!.playableClass == "painconduit" && character.first!.unlockperk18 && character.first!.unlockperk17 {
+            let newHealth = getHealth(level: character.first!.level, playableClass: character.first!.playableClass!) + 5
+            do {
+                
+                character.first!.health = newHealth
+                try moc.save()
+            }
+            catch{
+                print("error saving")
+            }
+        } else {
+            let newHealth = getHealth(level: character.first!.level, playableClass: character.first!.playableClass!)
+            do {
+                
+                character.first!.health = newHealth
+                try moc.save()
+            }
+            catch{
+                print("error saving")
+            }
+        }
+
     }
     
     func checkCounter() {
@@ -468,23 +529,34 @@ struct CharacterSelectedView: View {
     }
     
     func showAlert() {
-        print("Alert")
         showLevelUp = true
         let charlevel = character.first!.level
         let newlevel = charlevel + 1
-        print(newlevel)
         let charunlocks = character.first!.cardUnlocks
         let newunlocks = charunlocks + 1
-        print(newunlocks)
-        let newHealth = getHealth(level: newlevel, playableClass: character.first!.playableClass!)
-        do {
-            character.first!.level = newlevel
-            character.first!.cardUnlocks = newunlocks
-            character.first!.health = newHealth
-            try moc.save()
-        }
-        catch{
-            print("error saving")
+        
+        if character.first!.playableClass == "painconduit" && character.first!.unlockperk18 && character.first!.unlockperk17 {
+            let newHealth = getHealth(level: newlevel, playableClass: character.first!.playableClass!) + 5
+            do {
+                character.first!.level = newlevel
+                character.first!.cardUnlocks = newunlocks
+                character.first!.health = newHealth
+                try moc.save()
+            }
+            catch{
+                print("error saving")
+            }
+        } else {
+            let newHealth = getHealth(level: newlevel, playableClass: character.first!.playableClass!)
+            do {
+                character.first!.level = newlevel
+                character.first!.cardUnlocks = newunlocks
+                character.first!.health = newHealth
+                try moc.save()
+            }
+            catch{
+                print("error saving")
+            }
         }
     }
     
@@ -493,37 +565,51 @@ struct CharacterSelectedView: View {
     }
     
     private var headerView: some View{
-        HStack(alignment: .top){
-            Image("\(character.first?.logo ?? "")")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 70, height: 90)
-                .clipShape(Rectangle())
-                .shadow(radius: 5)
-                .padding(.trailing, 10)
-            
-            VStack(alignment: .leading) {
-                Text("\(character.first?.name ?? "")")
-                    .font(.title)
-                    .foregroundColor(titleColor)
-                    .fontWeight(.bold)
-                    .frame(width: 220.0)
+        VStack{
+            HStack(alignment: .top){
+                Image("\(character.first?.logo ?? "")")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 70, height: 90)
+                    .clipShape(Rectangle())
+                    .shadow(radius: 5)
+                    .padding(.trailing, 10)
                 
-                Text("The")
-                    .font(.title2)
-                    .fontWeight(.bold)
-                    .foregroundColor(titleColor)
-                    .multilineTextAlignment(.center)
-                    .frame(width: 220.0)
-                
-                Text("\(character.first?.displayClass ?? "")")
-                    .font(.title)
-                    .fontWeight(.bold)
-                    .frame(width: 220.0)
-                    .foregroundColor(titleColor)
+                VStack(alignment: .leading) {
+                    Text("\(character.first?.name ?? "")")
+                        .font(.title)
+                        .foregroundColor(titleColor)
+                        .fontWeight(.bold)
+                        .frame(width: 220.0)
+                    
+                    Text("The")
+                        .font(.title2)
+                        .fontWeight(.bold)
+                        .foregroundColor(titleColor)
+                        .multilineTextAlignment(.center)
+                        .frame(width: 220.0)
+                    
+                    Text("\(character.first?.displayClass ?? "")")
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .frame(width: 220.0)
+                        .foregroundColor(titleColor)
+                }
             }
-        }
-        .padding()
+            Divider()
+            HStack{
+                
+                ForEach(0 ..< characteristics.count, id: \.self) { x in
+                    HStack{
+                        Text("\(characteristics[x])")
+                            .foregroundColor(titleColor)
+                            .padding([.top, .leading])
+                    }
+                }
+                
+            }
+        }.padding()
+        
     }
     
 

@@ -30,11 +30,30 @@ struct BannerSpearPerkyView: View {
         let character = characters.first!
         VStack{
             VStack{
-                Text("Perks")
-                    .foregroundColor(titleColor)
-                    .font(.title3)
-                    .bold()
-                    .padding(.vertical)
+                HStack{
+                    Text("Perks")
+                        .foregroundColor(titleColor)
+                        .font(.title3)
+                        .bold()
+                        .padding(.vertical)
+                    
+                    Menu{
+                        NavigationLink(destination: AttackDeckPreview(characterId: characterId)) {
+                            Text("View Current Modifier Deck")
+                                .font(.title3)
+                                .padding()
+                                .frame(maxWidth: .infinity, maxHeight: 40)
+                        }
+                        .background(Color.black)
+                        .foregroundColor(.blue)
+                        .cornerRadius(10)
+                        .padding(.horizontal)
+                    } label: {
+                        Image(systemName: "ellipsis.circle")
+                            .font(.system(size: 24))
+                    }
+                    .navigationTitle("Perks")
+                }
                 Divider()
                     .foregroundColor(titleColor)
                     .bold()
@@ -69,7 +88,9 @@ struct BannerSpearPerkyView: View {
                         }
                     ))
                     .padding(.trailing)
-                    Text("Replace one (-1) card with one (shield 1 draw again) card").foregroundColor(accentColor)
+                    Text("Replace one (-1) card with one Shield 1 draw again card").foregroundColor(accentColor)
+                        .lineLimit(nil)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
                 .padding(.bottom)
                 HStack{
@@ -93,6 +114,8 @@ struct BannerSpearPerkyView: View {
                     ))
                     .padding(.trailing)
                     Text("Replace one (+0) card with one (+1) Add +1  for each ally adjacent to the target card").foregroundColor(accentColor)
+                        .lineLimit(nil)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
                 .padding(.bottom)
                 HStack{
@@ -115,7 +138,9 @@ struct BannerSpearPerkyView: View {
                         }
                     ))
                     .padding(.trailing)
-                    Text("Add one (+1 disarm) card").foregroundColor(accentColor)
+                    Text("Add one (+1) Disarm card").foregroundColor(accentColor)
+                        .lineLimit(nil)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
                 .padding(.bottom)
                 HStack{
@@ -139,7 +164,9 @@ struct BannerSpearPerkyView: View {
                         }
                     ))
                     .padding(.trailing)
-                    Text("Add one (+2 push 1) card").foregroundColor(accentColor)
+                    Text("Add one (+2) push 1 card").foregroundColor(accentColor)
+                        .lineLimit(nil)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
                 .padding(.bottom)
             }
@@ -165,7 +192,9 @@ struct BannerSpearPerkyView: View {
                         }
                     ))
                     .padding(.trailing)
-                    Text("Add two (+1 draw again) cards").foregroundColor(accentColor)
+                    Text("Add two (+1) draw again cards").foregroundColor(accentColor)
+                        .lineLimit(nil)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
                 .padding(.bottom)
                 HStack{
@@ -189,7 +218,9 @@ struct BannerSpearPerkyView: View {
                         }
                     ))
                     .padding(.trailing)
-                    Text("Add two (+1 health self draw again) cards").foregroundColor(accentColor)
+                    Text("Add two (+1) Heal self draw again cards").foregroundColor(accentColor)
+                        .lineLimit(nil)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
                 .padding(.bottom)
                 HStack{
@@ -204,6 +235,8 @@ struct BannerSpearPerkyView: View {
                     ))
                     .padding(.trailing)
                     Text("Ignore item (-1) effects and remove one (-1) card").foregroundColor(accentColor)
+                        .lineLimit(nil)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
                 .padding(.bottom)
                 HStack{
@@ -217,7 +250,9 @@ struct BannerSpearPerkyView: View {
                         }
                     ))
                     .padding(.trailing)
-                    Text("At the end of each of your long rests, grant one ally within range 3, move 2").foregroundColor(accentColor)
+                    Text("At the end of each of your long rests, grant one ally within Range 3, Move 2").foregroundColor(accentColor)
+                        .lineLimit(nil)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
                 .padding(.bottom)
                 HStack{
@@ -231,7 +266,9 @@ struct BannerSpearPerkyView: View {
                         }
                     ))
                     .padding(.trailing)
-                    Text("Whenever you open a door with a move ability, add +3 move").foregroundColor(accentColor)
+                    Text("Whenever you open a door with a move ability, add +3 Move").foregroundColor(accentColor)
+                        .lineLimit(nil)
+                        .fixedSize(horizontal: false, vertical: true)
                     
                 }
                 .padding(.bottom)
@@ -255,7 +292,9 @@ struct BannerSpearPerkyView: View {
                         }
                     ))
                     .padding(.trailing)
-                    Text("Once each scenario, during your turn, gain 2 shield for the round   (REQUIRES BOTH CHECKS TO BE UNLOCKED!) ").foregroundColor(accentColor)
+                    Text("Once each scenario, during your turn, gain 2 Shield for the round   (REQUIRES BOTH CHECKS TO BE UNLOCKED!) ").foregroundColor(accentColor)
+                        .lineLimit(nil)
+                        .fixedSize(horizontal: false, vertical: true)
                     
                 }
                 .padding(.bottom)

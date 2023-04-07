@@ -26,6 +26,7 @@ struct ResourceTrackerView: View {
                 .fontWeight(.bold)
                 .foregroundColor(CustomColor.blueish)
                 .multilineTextAlignment(.center)
+                .padding(.top)
             Divider()
                 .padding(.bottom)
             LazyHGrid(rows: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Rows@*/[GridItem(.fixed(20))]/*@END_MENU_TOKEN@*/) {

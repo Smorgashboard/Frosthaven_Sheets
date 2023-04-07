@@ -29,11 +29,30 @@ struct GeminatePerkyView: View {
         let character = characters.first!
         VStack{
             VStack{
-                Text("Perks")
-                    .foregroundColor(titleColor)
-                    .font(.title3)
-                    .bold()
-                    .padding(.vertical)
+                HStack{
+                    Text("Perks")
+                        .foregroundColor(titleColor)
+                        .font(.title3)
+                        .bold()
+                        .padding(.vertical)
+                    
+                    Menu{
+                        NavigationLink(destination: AttackDeckPreview(characterId: characterId)) {
+                            Text("View Current Modifier Deck")
+                                .font(.title3)
+                                .padding()
+                                .frame(maxWidth: .infinity, maxHeight: 40)
+                        }
+                        .background(Color.black)
+                        .foregroundColor(.blue)
+                        .cornerRadius(10)
+                        .padding(.horizontal)
+                    } label: {
+                        Image(systemName: "ellipsis.circle")
+                            .font(.system(size: 24))
+                    }
+                    .navigationTitle("Perks")
+                }
                 Divider()
                     .foregroundColor(titleColor)
                     .bold()
@@ -51,6 +70,8 @@ struct GeminatePerkyView: View {
                     ))
                     .padding(.trailing)
                     Text("Replace one (-2) card with a (+0) card").foregroundColor(accentColor)
+                        .lineLimit(nil)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
                 .padding(.bottom)
                 HStack{
@@ -82,7 +103,9 @@ struct GeminatePerkyView: View {
                         }
                     ))
                     .padding(.trailing)
-                    Text("Replace one (-1) card with one (+0 Consume Element: Generate Element) card").foregroundColor(accentColor)
+                    Text("Replace one (-1) card with one (+0) Consume Element: Generate Element card").foregroundColor(accentColor)
+                        .lineLimit(nil)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
                 .padding(.bottom)
                 HStack{
@@ -105,7 +128,9 @@ struct GeminatePerkyView: View {
                         }
                     ))
                     .padding(.trailing)
-                    Text("Replace one (+0) card with one (+1 poison) card").foregroundColor(accentColor)
+                    Text("Replace one (+0) card with one (+1) Poison card").foregroundColor(accentColor)
+                        .lineLimit(nil)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
                 .padding(.bottom)
                 HStack{
@@ -129,7 +154,9 @@ struct GeminatePerkyView: View {
                         }
                     ))
                     .padding(.trailing)
-                    Text("Replace one (+0) card with one (+1 wound) card").foregroundColor(accentColor)
+                    Text("Replace one (+0) card with one (+1) Wound card").foregroundColor(accentColor)
+                        .lineLimit(nil)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
                 .padding(.bottom)
                 HStack{
@@ -143,7 +170,9 @@ struct GeminatePerkyView: View {
                         }
                     ))
                     .padding(.trailing)
-                    Text("Replace two (+0) cards with two (pierce 3 draw again) cards").foregroundColor(accentColor)
+                    Text("Replace two (+0) cards with two Pierce 3 draw again cards").foregroundColor(accentColor)
+                        .lineLimit(nil)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
                 .padding(.bottom)
                 HStack{
@@ -157,7 +186,9 @@ struct GeminatePerkyView: View {
                         }
                     ))
                     .padding(.trailing)
-                    Text("Add two (+1 push 3) cards").foregroundColor(accentColor)
+                    Text("Add two (+1) Push 3 cards").foregroundColor(accentColor)
+                        .lineLimit(nil)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
                 .padding(.bottom)
                 HStack{
@@ -171,7 +202,9 @@ struct GeminatePerkyView: View {
                         }
                     ))
                     .padding(.trailing)
-                    Text("Add one (2x brittle self) card").foregroundColor(accentColor)
+                    Text("Add one (2x) Brittle self card").foregroundColor(accentColor)
+                        .lineLimit(nil)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
                 .padding(.bottom)
                 HStack{
@@ -194,7 +227,9 @@ struct GeminatePerkyView: View {
                         }
                     ))
                     .padding(.trailing)
-                    Text("Add one (+1 regenerate self draw again) card").foregroundColor(accentColor)
+                    Text("Add one (+1) Regenerate self draw again card").foregroundColor(accentColor)
+                        .lineLimit(nil)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
                 .padding(.bottom)
                 HStack{
@@ -209,6 +244,8 @@ struct GeminatePerkyView: View {
                     ))
                     .padding(.trailing)
                     Text("Ignore scenario effects").foregroundColor(accentColor)
+                        .lineLimit(nil)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
                 .padding(.bottom)
             }
@@ -224,7 +261,9 @@ struct GeminatePerkyView: View {
                         }
                     ))
                     .padding(.trailing)
-                    Text("Whenever you short rest you may remove one negative condition from one ally within range 3").foregroundColor(accentColor)
+                    Text("Whenever you short rest you may remove one negative condition from one ally within Range 3").foregroundColor(accentColor)
+                        .lineLimit(nil)
+                        .fixedSize(horizontal: false, vertical: true)
                     
                 }
                 .padding(.bottom)
@@ -240,6 +279,8 @@ struct GeminatePerkyView: View {
                     ))
                     .padding(.trailing)
                     Text("Once each Scenario, when you would give yourself a negative condition, prevent the condition").foregroundColor(accentColor)
+                        .lineLimit(nil)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
                 .padding(.bottom)
                 HStack{
@@ -264,6 +305,8 @@ struct GeminatePerkyView: View {
                     ))
                     .padding(.trailing)
                     Text("Whenever you perform an action with a lost icon, you may discard one card to recover one card from your discard pile of equal or lower level (REQUIRES BOTH CHECKS TO UNLOCK!)").foregroundColor(accentColor)
+                        .lineLimit(nil)
+                        .fixedSize(horizontal: false, vertical: true)
                     
                 }
                 .padding(.bottom)

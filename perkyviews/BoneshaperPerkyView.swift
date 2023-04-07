@@ -30,11 +30,30 @@ struct BoneshaperPerkyView: View {
         let character = characters.first!
         VStack{
             VStack{
-                Text("Perks")
-                    .foregroundColor(titleColor)
-                    .font(.title3)
-                    .bold()
-                    .padding(.vertical)
+                HStack{
+                    Text("Perks")
+                        .foregroundColor(titleColor)
+                        .font(.title3)
+                        .bold()
+                        .padding(.vertical)
+                    
+                    Menu{
+                        NavigationLink(destination: AttackDeckPreview(characterId: characterId)) {
+                            Text("View Current Modifier Deck")
+                                .font(.title3)
+                                .padding()
+                                .frame(maxWidth: .infinity, maxHeight: 40)
+                        }
+                        .background(Color.black)
+                        .foregroundColor(.blue)
+                        .cornerRadius(10)
+                        .padding(.horizontal)
+                    } label: {
+                        Image(systemName: "ellipsis.circle")
+                            .font(.system(size: 24))
+                    }
+                    .navigationTitle("Perks")
+                }
                 Divider()
                     .foregroundColor(titleColor)
                     .bold()
@@ -60,7 +79,9 @@ struct BoneshaperPerkyView: View {
                         }
                     ))
                     .padding(.trailing)
-                    Text("Replace one (-1) card with one (+0 curse) card").foregroundColor(accentColor)
+                    Text("Replace one (-1) card with one (+0) curse card").foregroundColor(accentColor)
+                        .lineLimit(nil)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
                 .padding(.bottom)
                 HStack{
@@ -83,7 +104,9 @@ struct BoneshaperPerkyView: View {
                         }
                     ))
                     .padding(.trailing)
-                    Text("Replace one (-1) card with one (+0 poison)card").foregroundColor(accentColor)
+                    Text("Replace one (-1) card with one (+0) poison card").foregroundColor(accentColor)
+                        .lineLimit(nil)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
                 .padding(.bottom)
                 HStack{
@@ -98,6 +121,8 @@ struct BoneshaperPerkyView: View {
                     ))
                     .padding(.trailing)
                     Text("Replace one (-2) card with one (+0) card").foregroundColor(accentColor)
+                        .lineLimit(nil)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
                 .padding(.bottom)
             }
@@ -131,7 +156,10 @@ struct BoneshaperPerkyView: View {
                         }
                     ))
                     .padding(.trailing)
-                    Text("Replace one (+0) card with one (+1) Kill the attacking summon to instead add (+4)").foregroundColor(accentColor)
+                    Text("Replace one (+0) card with one (+1) kill the attacking summon to instead add (+4)")
+                        .foregroundColor(accentColor)
+                        .lineLimit(nil)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
                 .padding(.bottom)
                 HStack{
@@ -154,7 +182,9 @@ struct BoneshaperPerkyView: View {
                         }
                     ))
                     .padding(.trailing)
-                    Text("Add three (+1 health, target Boneshaper draw again) cards").foregroundColor(accentColor)
+                    Text("Add three (+1) Heal, target Boneshaper draw again cards").foregroundColor(accentColor)
+                        .lineLimit(nil)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
                 .padding(.bottom)
                 HStack{
@@ -186,7 +216,9 @@ struct BoneshaperPerkyView: View {
                         }
                     ))
                     .padding(.trailing)
-                    Text("Add one (+2 leaf/dark) card").foregroundColor(accentColor)
+                    Text("Add one (+2) Earth/Dark card").foregroundColor(accentColor)
+                        .lineLimit(nil)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
                 .padding(.bottom)
                 HStack{
@@ -201,6 +233,8 @@ struct BoneshaperPerkyView: View {
                     ))
                     .padding(.trailing)
                     Text("Ignore scenario effects and add two (+1) cards").foregroundColor(accentColor)
+                        .lineLimit(nil)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
                 .padding(.bottom)
                 HStack{
@@ -214,7 +248,9 @@ struct BoneshaperPerkyView: View {
                         }
                     ))
                     .padding(.trailing)
-                    Text("Immediately before each of your rests, you may kill one of your summons to perform (bless) self").foregroundColor(accentColor)
+                    Text("Immediately before each of your rests, you may kill one of your summons to perform Bless self").foregroundColor(accentColor)
+                        .lineLimit(nil)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
                 .padding(.bottom)
                 HStack{
@@ -228,11 +264,14 @@ struct BoneshaperPerkyView: View {
                         }
                     ))
                     .padding(.trailing)
-                    Text("Once each scenario, when any character ally would become exhausted by suffering (damage), you may suffer 2 damage to reduce their hit point value to 1 instead").foregroundColor(accentColor)
+                    Text("Once each scenario, when any character ally would become exhausted by suffering Damage, you may suffer 2 damage to reduce their hit point value to 1 instead").foregroundColor(accentColor)
+                        .lineLimit(nil)
+                        .fixedSize(horizontal: false, vertical: true)
                     
                 }
                 .padding(.bottom)
                 HStack{
+                    HStack{
                     CheckBoxView(checked: Binding(
                         get: {
                             character.value(forKey: "unlockperk17") as? Bool ?? false
@@ -251,8 +290,11 @@ struct BoneshaperPerkyView: View {
                             try? moc.save()
                         }
                     ))
+                    }
                     .padding(.trailing)
                     Text("At the start of each scenario, you may play a level 1 card from your hand to perform a summon action of the card   (REQUIRES BOTH CHECKS TO BE UNLOCKED!) ").foregroundColor(accentColor)
+                        .lineLimit(nil)
+                        .fixedSize(horizontal: false, vertical: true)
                     
                 }
                 .padding(.bottom)

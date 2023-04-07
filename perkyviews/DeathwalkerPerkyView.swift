@@ -30,11 +30,30 @@ struct DeathwalkerPerkyView: View {
         let character = characters.first!
         VStack{
             VStack{
-                Text("Perks")
-                    .foregroundColor(titleColor)
-                    .font(.title3)
-                    .bold()
-                    .padding(.vertical)
+                HStack{
+                    Text("Perks")
+                        .foregroundColor(titleColor)
+                        .font(.title3)
+                        .bold()
+                        .padding(.vertical)
+                    
+                    Menu{
+                        NavigationLink(destination: AttackDeckPreview(characterId: characterId)) {
+                            Text("View Current Modifier Deck")
+                                .font(.title3)
+                                .padding()
+                                .frame(maxWidth: .infinity, maxHeight: 40)
+                        }
+                        .background(Color.black)
+                        .foregroundColor(.blue)
+                        .cornerRadius(10)
+                        .padding(.horizontal)
+                    } label: {
+                        Image(systemName: "ellipsis.circle")
+                            .font(.system(size: 24))
+                    }
+                    .navigationTitle("Perks")
+                }
                 Divider()
                     .foregroundColor(titleColor)
                     .bold()
@@ -52,6 +71,8 @@ struct DeathwalkerPerkyView: View {
                     ))
                     .padding(.trailing)
                     Text("Remove two (-1) cards").foregroundColor(accentColor)
+                        .lineLimit(nil)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
                 .padding(.bottom)
                 HStack{
@@ -66,6 +87,8 @@ struct DeathwalkerPerkyView: View {
                     ))
                     .padding(.trailing)
                     Text("Replace one (-2) card with one (+0) card").foregroundColor(accentColor)
+                        .lineLimit(nil)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
                 .padding(.bottom)
                 HStack{
@@ -98,6 +121,8 @@ struct DeathwalkerPerkyView: View {
                     ))
                     .padding(.trailing)
                     Text("Replace one (-1) card with one (+1) card").foregroundColor(accentColor)
+                        .lineLimit(nil)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
                 .padding(.bottom)
                 HStack{
@@ -130,8 +155,10 @@ struct DeathwalkerPerkyView: View {
                     ))
                     
                     .padding(.trailing)
-                    Text("Replace one (+0) card with one (+1 curse) card").foregroundColor(accentColor)
-                        .font(.body)
+                    Text("Replace one (+0) card with one (+1) Curse card").foregroundColor(accentColor)
+                        .lineLimit(nil)
+                        .fixedSize(horizontal: false, vertical: true)
+                        
                 }
                 .padding(.bottom)
                 HStack{
@@ -154,7 +181,9 @@ struct DeathwalkerPerkyView: View {
                         }
                     ))
                     .padding(.trailing)
-                    Text("Add one (+2 darkness) card").foregroundColor(accentColor)
+                    Text("Add one (+2) Dark card").foregroundColor(accentColor)
+                        .lineLimit(nil)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
                 .padding(.bottom)
                 HStack{
@@ -177,7 +206,9 @@ struct DeathwalkerPerkyView: View {
                         }
                     ))
                     .padding(.trailing)
-                    Text("Add one (stun draw again) and one (muddle draw again) card").foregroundColor(accentColor)
+                    Text("Add one Stun draw again and one Muddle draw again card").foregroundColor(accentColor)
+                        .lineLimit(nil)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
                 .padding(.bottom)
                 HStack{
@@ -200,7 +231,9 @@ struct DeathwalkerPerkyView: View {
                         }
                     ))
                     .padding(.trailing)
-                    Text("Add two (Heal +1, target 1 ally draw again) cards").foregroundColor(accentColor)
+                    Text("Add two Heal +1, Target 1 ally draw again cards").foregroundColor(accentColor)
+                        .lineLimit(nil)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
                 .padding(.bottom)
                 HStack{
@@ -215,6 +248,8 @@ struct DeathwalkerPerkyView: View {
                     ))
                     .padding(.trailing)
                     Text("Ignore scenario effects").foregroundColor(accentColor)
+                        .lineLimit(nil)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
                 .padding(.bottom)
             }
@@ -230,7 +265,9 @@ struct DeathwalkerPerkyView: View {
                         }
                     ))
                     .padding(.trailing)
-                    Text("Whenever you long rest, you may move one (Deathwalker token) up to three hexes").foregroundColor(accentColor)
+                    Text("Whenever you long rest, you may move one Deathwalker token up to three hexes").foregroundColor(accentColor)
+                        .lineLimit(nil)
+                        .fixedSize(horizontal: false, vertical: true)
                     
                 }
                 .padding(.bottom)
@@ -245,7 +282,9 @@ struct DeathwalkerPerkyView: View {
                         }
                     ))
                     .padding(.trailing)
-                    Text("Whenever you short rest, you may (consume darkness) to perform (muddle, curse range 2) as if you were occupying a hex with a (Deathwalker token)").foregroundColor(accentColor)
+                    Text("Whenever you short rest, you may consume Dark to perform Muddle, Curse Range 2 as if you were occupying a hex with a Deathwalker token").foregroundColor(accentColor)
+                        .lineLimit(nil)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
                 .padding(.bottom)
                 HStack{
@@ -259,7 +298,9 @@ struct DeathwalkerPerkyView: View {
                         }
                     ))
                     .padding(.trailing)
-                    Text("While you are occupying a hex with a (Deathwalker Token), all attacks targeting you gain disadvantage").foregroundColor(accentColor)
+                    Text("While you are occupying a hex with a Deathwalker Token, all attacks targeting you gain disadvantage").foregroundColor(accentColor)
+                        .lineLimit(nil)
+                        .fixedSize(horizontal: false, vertical: true)
                     
                 }
                 .padding(.bottom)
