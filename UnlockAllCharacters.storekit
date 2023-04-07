@@ -1,0 +1,33 @@
+{
+  "identifier" : "A77B456B",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+    {
+      "displayPrice" : "1.99",
+      "familyShareable" : false,
+      "internalID" : "B8A1934E",
+      "localizations" : [
+        {
+          "description" : "This will unlock all the characters.",
+          "displayName" : "Unlock All Characters",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.frosthacker.unlockallcharacters",
+      "referenceName" : "Unlock All Characters",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+
+  },
+  "subscriptionGroups" : [
+
+  ],
+  "version" : {
+    "major" : 2,
+    "minor" : 0
+  }
+}

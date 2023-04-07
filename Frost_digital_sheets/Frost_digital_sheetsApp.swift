@@ -11,12 +11,19 @@ import SwiftUI
 struct Frost_digital_sheetsApp: App {
     
     let persistenceController = PersistenceController.shared
+    @StateObject private var purchaseManager = PurchaseManager()
+    @StateObject private var settings = Settings()
 
 
     var body: some Scene {
         WindowGroup {
-            MainScreenView()
+            MainView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .environmentObject(purchaseManager)
+                .environmentObject(settings)
+                .task{
+                    await purchaseManager.updatePurchasedProducts()
+                }
         }
     }
 }
