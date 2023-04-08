@@ -28,7 +28,6 @@
 		D610C6A529CF3C01001776A2 /* SnowdancerPerkyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D610C6A429CF3C01001776A2 /* SnowdancerPerkyView.swift */; };
 		D611E24429E0399400939A41 /* NotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D611E24329E0399400939A41 /* NotesView.swift */; };
 		D64D331129CCEC760075D6B3 /* UnlockAllCharsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64D331029CCEC760075D6B3 /* UnlockAllCharsView.swift */; };
-		D64D331329CCEE5D0075D6B3 /* UnlockAllCharacters.storekit in Resources */ = {isa = PBXBuildFile; fileRef = D64D331229CCEE5D0075D6B3 /* UnlockAllCharacters.storekit */; };
 		D64D331529CDED3C0075D6B3 /* PurchaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64D331429CDED3C0075D6B3 /* PurchaseManager.swift */; };
 		D664FC0429C518BF0015398C /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D664FC0329C518BF0015398C /* LoadingView.swift */; };
 		D664FC0829C51A050015398C /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D664FC0729C51A050015398C /* MainView.swift */; };
@@ -94,7 +93,6 @@
 		D610C6A429CF3C01001776A2 /* SnowdancerPerkyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnowdancerPerkyView.swift; sourceTree = "<group>"; };
 		D611E24329E0399400939A41 /* NotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesView.swift; sourceTree = "<group>"; };
 		D64D331029CCEC760075D6B3 /* UnlockAllCharsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockAllCharsView.swift; sourceTree = "<group>"; };
-		D64D331229CCEE5D0075D6B3 /* UnlockAllCharacters.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = UnlockAllCharacters.storekit; sourceTree = "<group>"; };
 		D64D331429CDED3C0075D6B3 /* PurchaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseManager.swift; sourceTree = "<group>"; };
 		D664FC0329C518BF0015398C /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		D664FC0729C51A050015398C /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -128,6 +126,7 @@
 		D677700C29B63B4200262A9D /* AddToInventoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToInventoryView.swift; sourceTree = "<group>"; };
 		D699F9A729BA2E98002236C6 /* AttackDeckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttackDeckView.swift; sourceTree = "<group>"; };
 		D69A44A829AB9799001D5908 /* Characters.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Characters.xcdatamodel; sourceTree = "<group>"; };
+		D6BCC86329E1199800ABC937 /* FrosthackerAppPurchaseConfig.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = FrosthackerAppPurchaseConfig.storekit; sourceTree = "<group>"; };
 		D6C8225329C60C3300E3422F /* FAQView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQView.swift; sourceTree = "<group>"; };
 		D6C8225529C6667D00E3422F /* FAQS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQS.swift; sourceTree = "<group>"; };
 		D6C8225729C743B400E3422F /* CardListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListView.swift; sourceTree = "<group>"; };
@@ -156,7 +155,7 @@
 			children = (
 				D64D331429CDED3C0075D6B3 /* PurchaseManager.swift */,
 				D64D331029CCEC760075D6B3 /* UnlockAllCharsView.swift */,
-				D64D331229CCEE5D0075D6B3 /* UnlockAllCharacters.storekit */,
+				D6BCC86329E1199800ABC937 /* FrosthackerAppPurchaseConfig.storekit */,
 				D664FC0329C518BF0015398C /* LoadingView.swift */,
 				D6FF1AD629D5E28B0020E3E1 /* AttackDeckPreview.swift */,
 				D699F9A729BA2E98002236C6 /* AttackDeckView.swift */,
@@ -327,7 +326,6 @@
 			files = (
 				D66FCC0129AB2221006FE519 /* Preview Assets.xcassets in Resources */,
 				D66FCBFE29AB2221006FE519 /* Assets.xcassets in Resources */,
-				D64D331329CCEE5D0075D6B3 /* UnlockAllCharacters.storekit in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -526,7 +524,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 1.5;
 				DEVELOPMENT_ASSET_PATHS = "\"Frost_digital_sheets/Preview Content\"";
 				DEVELOPMENT_TEAM = 9HGQFWWAVQ;
 				ENABLE_PREVIEWS = YES;
@@ -542,7 +540,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = prod.frosthacker;
 				PRODUCT_NAME = Frosthacker;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -559,7 +557,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 1.5;
 				DEVELOPMENT_ASSET_PATHS = "\"Frost_digital_sheets/Preview Content\"";
 				DEVELOPMENT_TEAM = 9HGQFWWAVQ;
 				ENABLE_PREVIEWS = YES;
@@ -575,7 +573,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = prod.frosthacker;
 				PRODUCT_NAME = Frosthacker;
 				PROVISIONING_PROFILE_SPECIFIER = "";

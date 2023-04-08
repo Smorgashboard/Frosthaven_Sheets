@@ -1,5 +1,5 @@
 {
-  "identifier" : "A77B456B",
+  "identifier" : "418489A3",
   "nonRenewingSubscriptions" : [
 
   ],
@@ -7,21 +7,23 @@
     {
       "displayPrice" : "1.99",
       "familyShareable" : false,
-      "internalID" : "B8A1934E",
+      "internalID" : "6447437877",
       "localizations" : [
         {
-          "description" : "This will unlock all the characters.",
+          "description" : "This unlocks the non-starter character sheets",
           "displayName" : "Unlock All Characters",
           "locale" : "en_US"
         }
       ],
       "productID" : "com.frosthacker.unlockallcharacters",
-      "referenceName" : "Unlock All Characters",
+      "referenceName" : "com.frosthacker.unlockallcharacters",
       "type" : "NonConsumable"
     }
   ],
   "settings" : {
-
+    "_applicationInternalID" : "6447436176",
+    "_developerTeamID" : "9HGQFWWAVQ",
+    "_lastSynchronizedDate" : 702618011.27370501
   },
   "subscriptionGroups" : [
 
