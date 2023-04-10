@@ -31,8 +31,14 @@ class PurchaseManager: ObservableObject {
 
     func loadProducts() async throws {
         guard !self.productsLoaded else { return }
-        self.products = try await Product.products(for: productIds)
-        self.productsLoaded = true
+        do {
+            self.products = try await Product.products(for: productIds)
+            print("Products fetched: \(self.products)")
+            self.productsLoaded = true
+        } catch {
+            print("Error loading products: \(error)")
+            throw error
+        }
     }
 
     func purchase(_ product: Product) async throws {
