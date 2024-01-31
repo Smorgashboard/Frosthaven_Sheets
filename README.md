@@ -1,3 +1,3 @@
 # Frostacker iOS version  
 
-Code base for Frosthacker without assets
+Code base for Frosthacker with assets
